@@ -1,40 +1,36 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-export default class Navbar extends Component {
+class Navbar extends Component {
 
     render() {
         return (
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="/">Stick With It</a>
+            <nav class="navbar navbar-expand-md navbar-light bg-light position-fixed w-100">
+                <Link to="/" class="navbar-brand">Stick With It</Link>
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <Link to="/" class="nav-link">Habit Tracker</Link>
+                            <Link to="/" class="nav-link">Dashboard</Link>
                         </li>
                         <li class="nav-item">
-                            <Link to="/" class="nav-link">Habits</Link>
+                            <Link to="/habit-list" class="nav-link">Habits</Link>
                         </li>
                         <li class="nav-item">
                             <Link to="/create" class="nav-link">Create Habit</Link>
-                        </li>
+                        </li>                        
                         <li class="nav-item">
-                            <Link to="/user" class="nav-link">Create User</Link>
-                        </li>
-                        
+                            <Link to="/edit/:id" class="nav-link">Edit Habit</Link>
+                        </li>                        
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
                 </div>
             </nav>
         )
     }
-
 }
+
+export default Navbar;
