@@ -20,4 +20,11 @@ connection.once('open', () => {
     console.log('MongoDB database connected successfully!');
 });
 
+// routes
+const habitsRouter = require('./routes/habits');
+const usersRouter = require('./routes/users');
+
+app.use('/habits', habitsRouter);
+app.use('/users', usersRouter);
+
 app.listen(PORT, () => console.log('Listening on port: http://localhost:%s', PORT))

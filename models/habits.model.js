@@ -6,6 +6,8 @@ const habitSchema = new Schema({
     habitName: { type: String, required: true },
     type: { type: String, required: true },
     duration: { type: Number, required: true },
+    durUnits: { type: String, required: true },
+    sets: { type: Number, required: true },
     reps: { type: Number, required: true },
     notes: { type: String },
     date: { type: Date, required: true }
