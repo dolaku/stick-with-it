@@ -15,7 +15,7 @@ class App extends Component {
       <Router>
         <div className="wrapper">
           <Navbar />
-          <div className="mt-5 p-2 mb-auto">
+          <div className="mt-5 pt-4 mb-auto">
             <Route path="/login" exact component={Login} />
             <Route path="/" exact component={Dashboard} />
             <Route path="/edit/:id" component={EditHabit} />

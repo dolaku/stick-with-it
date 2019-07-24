@@ -8,33 +8,40 @@ class Login extends Component {
 
     render() {
 
-        const responseFacebook = (response) => {
-            console.log(response);
+        const resFacebook = (res) => {
+            console.log(res);
+            console.log(res.name);
+            console.log(res.email);
+            console.log(res.picture.data.url);
         }
 
-        const responseGoogle = (response) => {
-            console.log(response);
+        const resGoogle = (res) => {
+            console.log(res.profileObj);
+            console.log(res.profileObj.name);
+            console.log(res.profileObj.email);
+            console.log(res.profileObj.imageUrl);
         }
 
         return (
             <div className="container text-center d-flex flex-column justify-content-center align-items-center">
-                <h1 className="my-5">Login with Facebook or Google</h1>
+                <h4 className="my-3">Login with Facebook or Google</h4>
+                
+                <div className="container text-center d-flex flex-wrap justify-content-center align-items-center">
+                    <FacebookLogin
+                        className="my-4 mx-3 login-btn"
+                        appId="486572865409816"
+                        fields="name,email,picture"
+                        callback={resFacebook}
+                    />
 
-                <FacebookLogin
-                    className="my-5"
-                    appId="" //APP ID NOT CREATED YET
-                    fields="name,email,picture"
-                    callback={responseFacebook}
-                />
-
-                <GoogleLogin
-                    className="my-5"
-                    clientId="110658189417-fkks5fvfoco7hecsp4ijidhfn3ktu0o2.apps.googleusercontent.com"
-                    buttonText="LOGIN WITH GOOGLE"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                />
-
+                    <GoogleLogin
+                        className="my-4 mx-3 login-btn"
+                        clientId="110658189417-fkks5fvfoco7hecsp4ijidhfn3ktu0o2.apps.googleusercontent.com"
+                        buttonText="LOGIN WITH GOOGLE"
+                        onSuccess={resGoogle}
+                        onFailure={resGoogle}
+                    />
+                </div>
             </div>
         );
     }

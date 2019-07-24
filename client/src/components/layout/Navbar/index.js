@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import './style.css';
 
 class Navbar extends Component {
 
     render() {
         return (
             <nav class="navbar navbar-expand-md navbar-light bg-light position-fixed w-100">
-                <Link to="/" class="navbar-brand">Stick With It</Link>
+                <Link to="/" class="navbar-brand fancy-font">Stick With It</Link>
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
