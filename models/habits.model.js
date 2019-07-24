@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const habitSchema = new Schema({
-    username: { type: String, required: true },
+    user: { type: String, required: true },
     habitName: { type: String, required: true },
     type: { type: String, required: true },
     duration: { type: Number, required: true },
