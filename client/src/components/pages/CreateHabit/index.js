@@ -37,10 +37,16 @@ class CreateHabit extends Component {
     // a React lifecycle method - auto executed
     // loads this block right before anything renders to the page
     componentDidMount() {
-        this.setState({
-            accounts: ["test user", "second user"],
-            user: "test user"
-        })
+        axios.get("http://localhost:5000/users/")
+            .then(res => {
+                console.log(res);
+                if (res.data.length > 0) {
+                    this.setState({
+                        accounts: res.data.map(account => account.name),
+                        user: res.data[0].name
+                    })
+                }
+            })
     }
     
     // methods to set values
