@@ -6,26 +6,29 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav class="navbar navbar-expand-md navbar-light bg-light position-fixed w-100">
-                <Link to="/" class="navbar-brand fancy-font">Stick With It</Link>
+            <nav className="navbar navbar-expand-md navbar-light bg-light position-fixed w-100">
+                <Link to="/" className="navbar-brand fancy-font">Stick With It</Link>
                 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <Link to="/" class="nav-link">Dashboard</Link>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item active">
+                            <Link to="/" className="nav-link">Dashboard</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link to="/habit-list" class="nav-link">Habits</Link>
+                        <li className="nav-item">
+                            <Link to="/habit-list" className="nav-link">Habits</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link to="/create" class="nav-link">Create Habit</Link>
+                        <li className="nav-item">
+                            <Link to="/create" className="nav-link">Create Habit</Link>
                         </li>                        
-                        <li class="nav-item">
-                            <Link to="/edit/:id" class="nav-link">Edit Habit</Link>
+                        <li className="nav-item">
+                            <Link to="/edit/:id" className="nav-link">Edit Habit</Link>
+                        </li>                        
+                        <li className="nav-item">
+                            <Link to="/login" className="nav-link">Login</Link>
                         </li>                        
                     </ul>
                 </div>
