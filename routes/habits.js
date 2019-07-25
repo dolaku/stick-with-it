@@ -13,7 +13,7 @@ router.route('/').get((req, res) => {
 // create a new instance of a habit
 // save new habit to DB
 router.route('/add').post((req, res) => {
-    const username = req.body.username;
+    const user = req.body.user;
     const habitName = req.body.habitName;
     const type = req.body.type;
     const duration = Number(req.body.duration);
@@ -24,7 +24,7 @@ router.route('/add').post((req, res) => {
     const date = req.body.date;
 
     const newHabit = new Habit({
-        username,
+        user,
         habitName,
         type,
         duration,

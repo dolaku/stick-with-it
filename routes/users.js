@@ -13,12 +13,14 @@ router.route('/').get((req, res) => {
 // create a new instance of the user
 // save new user to DB
 router.route('/add').post((req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+    const name = req.body.name;
+    const email = req.body.email;
+    const photo = req.body.photo;
 
     const newUser = new User({
-        username,
-        password
+        name,
+        email,
+        photo
     });
 
     newUser.save()
