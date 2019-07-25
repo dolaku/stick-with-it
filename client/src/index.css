@@ -32,9 +32,3 @@ a:hover {
   text-decoration: none;
 }
 
-
-@media only screen and (max-width: 350px) {
-  nav a.fancy-font {
-    font-size: 1.75rem;
-  }
-}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./style.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -24,10 +25,10 @@ class CreateHabit extends Component {
             user: "",
             habitName: "",
             type: "",
-            duration: 0,
+            duration: 10,
             durUnits: "",
-            sets: 0,
-            reps: 0,
+            sets: 1,
+            reps: 1,
             notes: "",
             date: new Date(),
             accounts: []
@@ -122,13 +123,13 @@ class CreateHabit extends Component {
             <div>
                 <h1>Create A New Habit Log</h1>
                 <div className="row"></div>
-                    <div className="col-sm-6 mx-auto">
-                        <form onSubmit={this.onSubmit} className="text-left">
-                            <div className="form-group">
+                    <div className="col-sm-8 mx-auto">
+                        <form onSubmit={this.onSubmit} className="text-left add-habit-form">
+                            <div className="userform-group grid-span-2 mx-auto">
                                 <label>User: </label>
                                 <select ref={this.textInput}
                                     required
-                                    className="form-control"
+                                    className="form-control field-user"
                                     value={this.state.user}
                                     onChange={this.onChangeUser}>
                                     {
@@ -170,7 +171,7 @@ class CreateHabit extends Component {
                             <div>
                                 <label>Duration: </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     required
                                     className="form-control"
                                     value={this.state.duration}
@@ -192,7 +193,7 @@ class CreateHabit extends Component {
                             <div>
                                 <label>Sets: </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     className="form-control"
                                     value={this.state.sets}
                                     onChange={this.onChangeSets}
@@ -202,32 +203,31 @@ class CreateHabit extends Component {
                             <div>
                                 <label>Reps: </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     className="form-control"
                                     value={this.state.reps}
                                     onChange={this.onChangeReps}
                                 />
                             </div>
 
-                            <div>
+                            <div className="grid-span-2">
                                 <label>Notes: </label>
-                                <input
-                                    type="text"
+                                <textarea
                                     className="form-control"
                                     value={this.state.notes}
                                     onChange={this.onChangeNotes}
-                                />
+                                ></textarea>
                             </div>
 
-                            <div>
-                                <label>Date: </label>
+                            <div className="grid-span-2 v-align-center mx-auto">
+                                <label className="mr-2">Date: </label>
                                 <DatePicker
                                     selected={this.state.date}
                                     onChange={this.onChangeDate}
                                 />
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group grid-span-2 mx-auto">
                                 <input
                                     type="submit"
                                     value="Add a Habit"
