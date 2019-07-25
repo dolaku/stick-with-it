@@ -48,7 +48,7 @@ class CreateHabit extends Component {
                 }
             })
     }
-    
+
     // methods to set values
     onChangeUser(event) {
         this.setState({
@@ -121,118 +121,121 @@ class CreateHabit extends Component {
         return (
             <div>
                 <h1>Create A New Habit Log</h1>
-                <form onSubmit={this.onSubmit} className="text-left">
-                    <div className="form-group">
-                        <label>User: </label>
-                        <select ref={this.textInput}
-                            required
-                            className="form-control"
-                            value={this.state.user}
-                            onChange={this.onChangeUser}>
-                            {
-                                this.state.accounts.map(function(account) {
-                                    return (
-                                        <option
-                                            key={account}
-                                            value={account}>
-                                            {account}
-                                        </option>
-                                    )
-                                })
-                            }
-                        </select>
-                    </div>
+                <div className="row"></div>
+                    <div className="col-sm-6 mx-auto">
+                        <form onSubmit={this.onSubmit} className="text-left">
+                            <div className="form-group">
+                                <label>User: </label>
+                                <select ref={this.textInput}
+                                    required
+                                    className="form-control"
+                                    value={this.state.user}
+                                    onChange={this.onChangeUser}>
+                                    {
+                                        this.state.accounts.map(function (account) {
+                                            return (
+                                                <option
+                                                    key={account}
+                                                    value={account}>
+                                                    {account}
+                                                </option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                            </div>
 
-                    <div>
-                        <label>Habit: </label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.habitName}
-                            onChange={this.onChangehabitName} 
-                            />
-                    </div>
+                            <div>
+                                <label>Habit: </label>
+                                <input
+                                    type="text"
+                                    required
+                                    className="form-control"
+                                    value={this.state.habitName}
+                                    onChange={this.onChangehabitName}
+                                />
+                            </div>
 
-                    <div>
-                        <label>Type: </label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.type}
-                            onChange={this.onChangeType} 
-                            />
-                    </div>
+                            <div>
+                                <label>Type: </label>
+                                <input
+                                    type="text"
+                                    required
+                                    className="form-control"
+                                    value={this.state.type}
+                                    onChange={this.onChangeType}
+                                />
+                            </div>
 
-                    <div>
-                        <label>Duration: </label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.duration}
-                            onChange={this.onChangeDuration} 
-                            />
-                    </div>
+                            <div>
+                                <label>Duration: </label>
+                                <input
+                                    type="text"
+                                    required
+                                    className="form-control"
+                                    value={this.state.duration}
+                                    onChange={this.onChangeDuration}
+                                />
+                            </div>
 
-                    <div>
-                        <label>Units: </label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            value={this.state.durUnits}
-                            onChange={this.onChangeDurUnits} 
-                            />
-                    </div>
+                            <div>
+                                <label>Units: </label>
+                                <input
+                                    type="text"
+                                    required
+                                    className="form-control"
+                                    value={this.state.durUnits}
+                                    onChange={this.onChangeDurUnits}
+                                />
+                            </div>
 
-                    <div>
-                        <label>Sets: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={this.state.sets}
-                            onChange={this.onChangeSets} 
-                            />
-                    </div>
+                            <div>
+                                <label>Sets: </label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={this.state.sets}
+                                    onChange={this.onChangeSets}
+                                />
+                            </div>
 
-                    <div>
-                        <label>Reps: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={this.state.reps}
-                            onChange={this.onChangeReps} 
-                            />
-                    </div>
+                            <div>
+                                <label>Reps: </label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={this.state.reps}
+                                    onChange={this.onChangeReps}
+                                />
+                            </div>
 
-                    <div>
-                        <label>Notes: </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={this.state.notes}
-                            onChange={this.onChangeNotes} 
-                            />
-                    </div>
+                            <div>
+                                <label>Notes: </label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={this.state.notes}
+                                    onChange={this.onChangeNotes}
+                                />
+                            </div>
 
-                    <div>
-                        <label>Date: </label>
-                        <DatePicker
-                            selected={this.state.date}
-                            onChange={this.onChangeDate} 
-                            />
-                    </div>
+                            <div>
+                                <label>Date: </label>
+                                <DatePicker
+                                    selected={this.state.date}
+                                    onChange={this.onChangeDate}
+                                />
+                            </div>
 
-                    <div className="form-group">
-                        <input 
-                            type="submit"
-                            value="Add a Habit"
-                            className="btn btn-primary"
-                        />
+                            <div className="form-group">
+                                <input
+                                    type="submit"
+                                    value="Add a Habit"
+                                    className="btn btn-primary"
+                                />
+                            </div>
+                        </form>
                     </div>
-                </form>
             </div>
         )
     }
