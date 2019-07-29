@@ -42,7 +42,7 @@ class HabitList extends Component {
         return (
             <div>
                 <h1>Habit List</h1>
-                <table className="table">
+                <table className="table mt-3">
                     <thead className="thead-light">
                         <tr>
                             <th>User</th>
@@ -56,11 +56,11 @@ class HabitList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* { this.habitList() } */}
+                        { this.habitList() }
 
-                        {this.state.habits.map(currentHabit => {
-                            <EachHabit habit={currentHabit} deleteHabit={this.deleteHabit} key={currentHabit._id} />;
-                        }
+                        {/* {this.state.habits.map(currentHabit => {
+                            <EachHabit habit={currentHabit} deleteHabit={this.deleteHabit} key={currentHabit._id};
+                        } */}
                     </tbody>
                 </table>
             </div>
