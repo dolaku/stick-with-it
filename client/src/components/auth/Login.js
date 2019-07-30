@@ -29,6 +29,7 @@ class Login extends Component {
                 email: res.profileObj.email,
                 imageURL: res.profileObj.imageUrl
             })
+            console.log(this.state.isSignedIn);
         }
 
         const logout = () => {
@@ -45,25 +46,21 @@ class Login extends Component {
 
 
         return (
-            <div className="container text-center d-flex flex-column justify-content-center align-items-center">
-                <h4 className="my-3">Login with Google</h4>
-
+            <div>
                 {
                     this.state.isSignedIn ? (
-                        <div>
-                            <h5>Signed In!</h5>
-                            <p>Hello, {this.state.firstName}</p>
-                            <img className="userPhoto" src={this.state.imageURL} />
+                        <div className="login-wrapper">
+                            <span className="mb-2 user-greeting">Hello, {this.state.firstName}<img className="userPhoto" src={this.state.imageURL} alt="user" /></span>
                             <GoogleLogout
+                                className="logout-btn"
                                 buttonText="Logout"
-                                onClick={logout}
+                                onSuccess={logout}
                                 >
                             </GoogleLogout>
                         </div>
                     ) : (
-                        <div>
+                        <div className="login-wrapper">
                             <GoogleLogin
-                                className="my-4 login-btn"
                                 clientId="110658189417-fkks5fvfoco7hecsp4ijidhfn3ktu0o2.apps.googleusercontent.com"
                                 buttonText="LOGIN"
                                 onSuccess={resGoogle}
@@ -72,9 +69,6 @@ class Login extends Component {
                         </div>
                     )
                 }
-
-                
-                
             </div>
         );
     }

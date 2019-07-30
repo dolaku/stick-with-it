@@ -1,3 +1,8 @@
+.form-control:focus {
+    border-color: #ced4da;
+    box-shadow: none;
+}
+
 form.add-habit-form {
     display: grid;
     grid-gap: 10px;
@@ -16,6 +21,10 @@ form.add-habit-form {
 
 .field-user {
     min-width: 280px;
+}
+
+.react-datepicker__header {
+    background-color: #a5b2bd;
 }
 
 .react-datepicker__input-container input {

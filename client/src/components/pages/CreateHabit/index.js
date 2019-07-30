@@ -222,6 +222,7 @@ class CreateHabit extends Component {
                             <div className="grid-span-2 v-align-center mx-auto">
                                 <label className="mr-2">Date: </label>
                                 <DatePicker
+                                    className="form-control"
                                     selected={this.state.date}
                                     onChange={this.onChangeDate}
                                 />
