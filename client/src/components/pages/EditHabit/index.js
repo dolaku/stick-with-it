@@ -127,7 +127,7 @@ class EditHabit extends Component {
         }
         console.log(habit);
 
-        axios.post("http://localhost:5000/habits/update" + this.props.match.params.id, habit)
+        axios.post("http://localhost:5000/habits/update/" + this.props.match.params.id, habit)
             .then(res => console.log(res.data));
 
         window.location = "/";
@@ -245,7 +245,7 @@ class EditHabit extends Component {
                             <div className="form-group grid-span-2 mx-auto">
                                 <input
                                     type="submit"
-                                    value="Edit Habit Log"
+                                    value="Update"
                                     className="btn btn-primary"
                                 />
                             </div>
