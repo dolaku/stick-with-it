@@ -18,13 +18,13 @@ class HabitList extends Component {
         axios.get("http://localhost:5000/habits/")
             .then(res => {
                 console.log(res.data);
-                this.setState({ exercises: res.data })
+                this.setState({ habits: res.data })
             })
             .catch(err => console.log(err))
     }
 
     deleteHabit(id) {
-        axios.get("http://localhost:5000/habits/" + id)
+        axios.delete("http://localhost:5000/habits/" + id)
             .then(res => console.log(res.data));
 
         this.setState({
@@ -33,6 +33,7 @@ class HabitList extends Component {
     }
 
     habitList() {
+        console.log(this.state.habits);
         return this.state.habits.map(currentHabit => {
             return <EachHabit habit={currentHabit} deleteHabit={this.deleteHabit} key={currentHabit._id} />;
         })
@@ -57,10 +58,6 @@ class HabitList extends Component {
                     </thead>
                     <tbody>
                         { this.habitList() }
-
-                        {/* {this.state.habits.map(currentHabit => {
-                            <EachHabit habit={currentHabit} deleteHabit={this.deleteHabit} key={currentHabit._id};
-                        } */}
                     </tbody>
                 </table>
             </div>

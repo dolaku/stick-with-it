@@ -28,9 +28,6 @@ class Navbar extends Component {
                             </li>
                             <li className="nav-item">
                                 <Link to="/create" className="nav-link">Add Habit</Link>
-                            </li>                        
-                            <li className="nav-item mr-2">
-                                <Link to="/edit/:id" className="nav-link">Edit Habit</Link>
                             </li>
                         </ul>
                     </div>
