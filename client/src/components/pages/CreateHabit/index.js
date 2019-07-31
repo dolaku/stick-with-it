@@ -31,23 +31,26 @@ class CreateHabit extends Component {
             reps: 1,
             notes: "",
             date: new Date(),
-            accounts: []
+
+            accounts: [],
+            units: ["sec", "min", "hr", "count"]
         }
     }
 
     // a React lifecycle method - auto executed
     // loads this block right before anything renders to the page
     componentDidMount() {
-        axios.get("http://localhost:5000/users/")
-            .then(res => {
-                console.log(res);
-                if (res.data.length > 0) {
-                    this.setState({
-                        accounts: res.data.map(account => account.email),
-                        user: res.data[0].email
-                    })
-                }
-            })
+       
+        // axios.get("http://localhost:5000/users/")
+        //     .then(res => {
+        //         console.log(res);
+        //         if (res.data.length > 0) {
+        //             this.setState({
+        //                 accounts: res.data.map(account => account.email),
+        //                 user: res.data[0].email
+        //             })
+        //         }
+        //     })
     }
 
     // methods to set values
@@ -125,7 +128,8 @@ class CreateHabit extends Component {
                 <div className="row"></div>
                     <div className="col-sm-8 mx-auto">
                         <form onSubmit={this.onSubmit} className="text-left add-habit-form">
-                            <div className="userform-group grid-span-2 mx-auto">
+
+                            {/* <div className="userform-group grid-span-2 mx-auto">
                                 <label>User: </label>
                                 <select ref={this.textInput}
                                     required
@@ -144,6 +148,17 @@ class CreateHabit extends Component {
                                         })
                                     }
                                 </select>
+                            </div> */}
+
+                            <div className="userform-group grid-span-2 mx-auto">
+                                <label>User: </label>
+                                <input
+                                    type="text"
+                                    required
+                                    className="form-control"
+                                    value={this.state.user}
+                                    onChange={this.onChangeUser}
+                                />
                             </div>
 
                             <div>
@@ -181,13 +196,30 @@ class CreateHabit extends Component {
 
                             <div>
                                 <label>Units: </label>
-                                <input
+                                {/* <input
                                     type="text"
                                     required
                                     className="form-control"
                                     value={this.state.durUnits}
                                     onChange={this.onChangeDurUnits}
-                                />
+                                /> */}
+                                <select ref={this.textInput}
+                                    required
+                                    className="form-control"
+                                    value={this.state.durUnits}
+                                    onChange={this.onChangeDurUnits}>
+                                    {
+                                        this.state.units.map(function (unit) {
+                                            return (
+                                                <option
+                                                    key={unit}
+                                                    value={unit}>
+                                                    {unit}
+                                                </option>
+                                            )
+                                        })
+                                    }
+                                </select>
                             </div>
 
                             <div>

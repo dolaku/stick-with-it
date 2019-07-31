@@ -17,9 +17,13 @@ class App extends Component {
           <Navbar />
           <div className="mt-2 mb-auto text-center">
             <Route path="/" exact component={Dashboard} />
-            <Route path="/login" exact component={Login} />
+            <Route path="/login" component={Login} />
             <Route path="/edit/:id" component={EditHabit} />
-            <Route path="/create" component={CreateHabit} />
+            <Route path="/create" render={ (props) => {
+              return (
+                <CreateHabit  />
+              )
+            }} />
             <Route path="/habit-list" component={HabitList} />
           </div>
           <Footer />
