@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./style.css";
 
 import GoogleLogin from "react-google-login";
@@ -14,22 +15,46 @@ class Login extends Component {
             name: "",
             firstName: "",
             email: "",
-            imageURL: ""
+            photo: ""
         }
     }
 
     render() {
 
        
-        const resGoogle = (res) => {
+        const login = (res) => {
+            
             this.setState({
                 isSignedIn: true,
-                name: res.profileObj.name,
                 firstName: res.profileObj.givenName,
+                name: res.profileObj.name,
                 email: res.profileObj.email,
-                imageURL: res.profileObj.imageUrl
+                photo: res.profileObj.imageUrl
             })
-            console.log(this.state.isSignedIn);
+            
+            const user = {
+                name: this.state.name,
+                email: this.state.email,
+                photo: this.state.photo
+            }
+            console.log(user);
+
+            axios.get("http://localhost:5000/users/")
+                .then((res) => {
+                    const allUsers = res.data;
+                    let emailsArray = [];
+
+                    allUsers.forEach(element => {
+                        emailsArray.push(element.email);
+                    });
+
+                    // check if user is already saved in db
+                    if (!emailsArray.includes(this.state.email)) {
+                        axios.post("http://localhost:5000/users/add", user)
+                            .then(() => console.log(user));
+                    }
+                })
+
         }
 
         const logout = () => {
@@ -38,9 +63,8 @@ class Login extends Component {
                 name: "",
                 firstName: "",
                 email: "",
-                imageURL: ""
+                photo: ""
             })
-            console.log(this.state.isSignedIn);
         }
 
 
@@ -50,21 +74,20 @@ class Login extends Component {
                 {
                     this.state.isSignedIn ? (
                         <div className="login-wrapper">
-                            <span className="mb-2 user-greeting">Hello, {this.state.firstName}<img className="userPhoto" src={this.state.imageURL} alt="user" /></span>
+                            <span className="user-greeting">Hi, {this.state.firstName}<img className="userPhoto" src={this.state.photo} alt="user" /></span>
                             <GoogleLogout
                                 className="logout-btn"
                                 buttonText="Logout"
                                 onSuccess={logout}
-                                >
-                            </GoogleLogout>
+                            />
                         </div>
                     ) : (
                         <div className="login-wrapper">
                             <GoogleLogin
                                 clientId="110658189417-fkks5fvfoco7hecsp4ijidhfn3ktu0o2.apps.googleusercontent.com"
                                 buttonText="LOGIN"
-                                onSuccess={resGoogle}
-                                onFailure={resGoogle}
+                                onSuccess={login}
+                                onFailure={login}
                             />
                         </div>
                     )

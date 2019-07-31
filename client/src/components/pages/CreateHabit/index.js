@@ -43,8 +43,8 @@ class CreateHabit extends Component {
                 console.log(res);
                 if (res.data.length > 0) {
                     this.setState({
-                        accounts: res.data.map(account => account.name),
-                        user: res.data[0].name
+                        accounts: res.data.map(account => account.email),
+                        user: res.data[0].email
                     })
                 }
             })
@@ -115,7 +115,7 @@ class CreateHabit extends Component {
         axios.post("http://localhost:5000/habits/add", habit)
             .then(res => console.log(res.data));
 
-        window.location = "/";
+        window.location = "/habit-list";
     }
 
     render() {

@@ -9,18 +9,16 @@ class Navbar extends Component {
         return (
             <nav className="navbar navbar-expand-md navbar-light bg-light">
                 <Link to="/" className="navbar-brand fancy-font">Stick With It</Link>
-                
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler mb-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
+                
 
-                <div className="ml-auto text-right">
-                    
+                <div className="nav-right ml-auto text-right">
                     <Login />
-
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav">
-                            <li className="nav-item active">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item">
                                 <Link to="/" className="nav-link">Dashboard</Link>
                             </li>
                             <li className="nav-item">
@@ -31,7 +29,6 @@ class Navbar extends Component {
                             </li>
                         </ul>
                     </div>
-
                 </div>
             </nav>
         )

@@ -17,7 +17,6 @@ class HabitList extends Component {
     componentDidMount() {
         axios.get("http://localhost:5000/habits/")
             .then(res => {
-                console.log(res.data);
                 this.setState({ habits: res.data })
             })
             .catch(err => console.log(err))
@@ -33,7 +32,6 @@ class HabitList extends Component {
     }
 
     habitList() {
-        console.log(this.state.habits);
         return this.state.habits.map(currentHabit => {
             return <EachHabit habit={currentHabit} deleteHabit={this.deleteHabit} key={currentHabit._id} />;
         })

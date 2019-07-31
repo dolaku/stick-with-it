@@ -12,8 +12,8 @@ const EachHabit = props => (
         <td>{props.habit.notes}</td>
         <td>{props.habit.date.substring(0, 10)}</td>
         <td>
-            <Link to={"/edit/" + props.habit._id}><i className="fas fa-edit mr-2"></i></Link>
-            <Link to="" onClick={ () => props.deleteHabit(props.habit._id) } className=""><i className="fas fa-trash"></i></Link>
+            <Link to={"/edit/" + props.habit._id}><i className="fas fa-edit mr-2" alt="edit" title="edit"></i></Link>
+            <Link to="" onClick={ () => props.deleteHabit(props.habit._id) } className=""><i className="fas fa-trash" alt="delete" title="delete"></i></Link>
         </td>
     </tr>
 )

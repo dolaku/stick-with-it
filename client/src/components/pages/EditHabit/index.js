@@ -56,7 +56,6 @@ class EditHabit extends Component {
 
         axios.get("http://localhost:5000/users/")
             .then(res => {
-                console.log(res);
                 if (res.data.length > 0) {
                     this.setState({
                         accounts: res.data.map(account => account.name)
@@ -130,7 +129,7 @@ class EditHabit extends Component {
         axios.post("http://localhost:5000/habits/update/" + this.props.match.params.id, habit)
             .then(res => console.log(res.data));
 
-        window.location = "/";
+        window.location = "/habit-list";
     }
 
     render() {
