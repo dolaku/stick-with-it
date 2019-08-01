@@ -10,7 +10,6 @@ class EditHabit extends Component {
         super(props);
         this.textInput = React.createRef();
 
-        this.onChangeUser = this.onChangeUser.bind(this);
         this.onChangehabitName = this.onChangehabitName.bind(this);
         this.onChangeType = this.onChangeType.bind(this);
         this.onChangeDuration = this.onChangeDuration.bind(this);
@@ -31,7 +30,8 @@ class EditHabit extends Component {
             reps: 1,
             notes: "",
             date: new Date(),
-            accounts: []
+
+            units: ["sec", "min", "hr", "count", "times/day"]
         }
     }
 
@@ -53,23 +53,9 @@ class EditHabit extends Component {
                 })
             })
             .catch(err => console.log(err));
-
-        axios.get("http://localhost:5000/users/")
-            .then(res => {
-                if (res.data.length > 0) {
-                    this.setState({
-                        accounts: res.data.map(account => account.name)
-                    })
-                }
-            })
     }
 
     // methods to set values
-    onChangeUser(event) {
-        this.setState({
-            user: event.target.value
-        });
-    }
     onChangehabitName(event) {
         this.setState({
             habitName: event.target.value
@@ -124,7 +110,6 @@ class EditHabit extends Component {
             notes: this.state.notes,
             date: this.state.date
         }
-        console.log(habit);
 
         axios.post("http://localhost:5000/habits/update/" + this.props.match.params.id, habit)
             .then(res => console.log(res.data));
@@ -139,25 +124,15 @@ class EditHabit extends Component {
                 <div className="row"></div>
                     <div className="col-sm-8 mx-auto">
                         <form onSubmit={this.onSubmit} className="text-left add-habit-form">
-                            <div className="userform-group grid-span-2 mx-auto">
+
+                            <div className="userform-group d-none grid-span-2 mx-auto">
                                 <label>User: </label>
-                                <select ref={this.textInput}
+                                <input
+                                    type="text"
                                     required
-                                    className="form-control field-user"
-                                    value={this.state.user}
-                                    onChange={this.onChangeUser}>
-                                    {
-                                        this.state.accounts.map(function (account) {
-                                            return (
-                                                <option
-                                                    key={account}
-                                                    value={account}>
-                                                    {account}
-                                                </option>
-                                            )
-                                        })
-                                    }
-                                </select>
+                                    className="form-control"
+                                    defaultValue={this.state.user}
+                                />
                             </div>
 
                             <div>
@@ -183,7 +158,7 @@ class EditHabit extends Component {
                             </div>
 
                             <div>
-                                <label>Duration: </label>
+                                <label>Duration/Amount: </label>
                                 <input
                                     type="number"
                                     required
@@ -195,13 +170,23 @@ class EditHabit extends Component {
 
                             <div>
                                 <label>Units: </label>
-                                <input
-                                    type="text"
+                                <select ref={this.textInput}
                                     required
                                     className="form-control"
                                     value={this.state.durUnits}
-                                    onChange={this.onChangeDurUnits}
-                                />
+                                    onChange={this.onChangeDurUnits}>
+                                    {
+                                        this.state.units.map(function (unit) {
+                                            return (
+                                                <option
+                                                    key={unit}
+                                                    value={unit}>
+                                                    {unit}
+                                                </option>
+                                            )
+                                        })
+                                    }
+                                </select>
                             </div>
 
                             <div>

@@ -10,7 +10,6 @@ class CreateHabit extends Component {
         super(props);
         this.textInput = React.createRef();
 
-        this.onChangeUser = this.onChangeUser.bind(this);
         this.onChangehabitName = this.onChangehabitName.bind(this);
         this.onChangeType = this.onChangeType.bind(this);
         this.onChangeDuration = this.onChangeDuration.bind(this);
@@ -32,33 +31,23 @@ class CreateHabit extends Component {
             notes: "",
             date: new Date(),
 
-            accounts: [],
-            units: ["sec", "min", "hr", "count"]
+            units: ["sec", "min", "hr", "count", "times/day"]
         }
     }
 
     // a React lifecycle method - auto executed
     // loads this block right before anything renders to the page
     componentDidMount() {
-       
-        // axios.get("http://localhost:5000/users/")
-        //     .then(res => {
-        //         console.log(res);
-        //         if (res.data.length > 0) {
-        //             this.setState({
-        //                 accounts: res.data.map(account => account.email),
-        //                 user: res.data[0].email
-        //             })
-        //         }
-        //     })
+        const username = document.getElementById("user-greeting")
+        let userEmail = "";
+        if (username) {
+            userEmail = username.getAttribute("data-user");
+        }
+
+        this.setState({ user: userEmail});
     }
 
     // methods to set values
-    onChangeUser(event) {
-        this.setState({
-            user: event.target.value
-        });
-    }
     onChangehabitName(event) {
         this.setState({
             habitName: event.target.value
@@ -113,7 +102,6 @@ class CreateHabit extends Component {
             notes: this.state.notes,
             date: this.state.date
         }
-        console.log(habit);
 
         axios.post("http://localhost:5000/habits/add", habit)
             .then(res => console.log(res.data));
@@ -129,35 +117,13 @@ class CreateHabit extends Component {
                     <div className="col-sm-8 mx-auto">
                         <form onSubmit={this.onSubmit} className="text-left add-habit-form">
 
-                            {/* <div className="userform-group grid-span-2 mx-auto">
-                                <label>User: </label>
-                                <select ref={this.textInput}
-                                    required
-                                    className="form-control field-user"
-                                    value={this.state.user}
-                                    onChange={this.onChangeUser}>
-                                    {
-                                        this.state.accounts.map(function (account) {
-                                            return (
-                                                <option
-                                                    key={account}
-                                                    value={account}>
-                                                    {account}
-                                                </option>
-                                            )
-                                        })
-                                    }
-                                </select>
-                            </div> */}
-
-                            <div className="userform-group grid-span-2 mx-auto">
+                            <div className="userform-group d-none grid-span-2 mx-auto">
                                 <label>User: </label>
                                 <input
                                     type="text"
                                     required
                                     className="form-control"
-                                    value={this.state.user}
-                                    onChange={this.onChangeUser}
+                                    defaultValue={this.state.user}
                                 />
                             </div>
 
@@ -184,7 +150,7 @@ class CreateHabit extends Component {
                             </div>
 
                             <div>
-                                <label>Duration: </label>
+                                <label>Duration/Amount: </label>
                                 <input
                                     type="number"
                                     required
@@ -196,13 +162,6 @@ class CreateHabit extends Component {
 
                             <div>
                                 <label>Units: </label>
-                                {/* <input
-                                    type="text"
-                                    required
-                                    className="form-control"
-                                    value={this.state.durUnits}
-                                    onChange={this.onChangeDurUnits}
-                                /> */}
                                 <select ref={this.textInput}
                                     required
                                     className="form-control"

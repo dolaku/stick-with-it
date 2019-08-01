@@ -37,7 +37,6 @@ class Login extends Component {
                 email: this.state.email,
                 photo: this.state.photo
             }
-            console.log(user);
 
             axios.get("http://localhost:5000/users/")
                 .then((res) => {
@@ -54,7 +53,6 @@ class Login extends Component {
                             .then(() => console.log(user));
                     }
                 })
-
         }
 
         const logout = () => {
@@ -74,7 +72,7 @@ class Login extends Component {
                 {
                     this.state.isSignedIn ? (
                         <div className="login-wrapper">
-                            <span className="user-greeting">Hi, {this.state.firstName}<img className="userPhoto" src={this.state.photo} alt="user" /></span>
+                            <span id="user-greeting" data-user={this.state.email}>Hi, {this.state.firstName}<img className="userPhoto" src={this.state.photo} alt="user"  /></span>
                             <GoogleLogout
                                 className="logout-btn"
                                 buttonText="Logout"
