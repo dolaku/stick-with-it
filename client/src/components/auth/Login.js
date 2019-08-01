@@ -5,6 +5,8 @@ import "./style.css";
 import GoogleLogin from "react-google-login";
 import GoogleLogout from 'react-google-login';
 
+const root = "http://localhost:5000";
+
 class Login extends Component {
 
     constructor(props) {
@@ -38,7 +40,7 @@ class Login extends Component {
                 photo: this.state.photo
             }
 
-            axios.get("http://localhost:5000/users/")
+            axios.get(root + "/users/")
                 .then((res) => {
                     const allUsers = res.data;
                     let emailsArray = [];
@@ -49,7 +51,7 @@ class Login extends Component {
 
                     // check if user is already saved in db
                     if (!emailsArray.includes(this.state.email)) {
-                        axios.post("http://localhost:5000/users/add", user)
+                        axios.post(root + "/users/add", user)
                             .then(() => console.log(user));
                     }
                 })

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import EachHabit from "../EachHabit";
 
+const root = "http://localhost:5000";
 
 class HabitList extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class HabitList extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:5000/habits/")
+        axios.get(root + "/habits/")
             .then(res => {
                 this.setState({ habits: res.data })
             })
@@ -23,7 +24,7 @@ class HabitList extends Component {
     }
 
     deleteHabit(id) {
-        axios.delete("http://localhost:5000/habits/" + id)
+        axios.delete(root + "/habits/" + id)
             .then(res => console.log(res.data));
 
         this.setState({

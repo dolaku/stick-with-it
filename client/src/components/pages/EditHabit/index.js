@@ -4,6 +4,8 @@ import "./style.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+const root = "http://localhost:5000";
+
 class EditHabit extends Component {
 
     constructor(props) {
@@ -111,7 +113,7 @@ class EditHabit extends Component {
             date: this.state.date
         }
 
-        axios.post("http://localhost:5000/habits/update/" + this.props.match.params.id, habit)
+        axios.post(root + "/habits/update/" + this.props.match.params.id, habit)
             .then(res => console.log(res.data));
 
         window.location = "/habit-list";

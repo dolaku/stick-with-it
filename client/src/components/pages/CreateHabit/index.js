@@ -4,6 +4,8 @@ import "./style.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+const root = "http://localhost:5000";
+
 class CreateHabit extends Component {
 
     constructor(props) {
@@ -103,7 +105,7 @@ class CreateHabit extends Component {
             date: this.state.date
         }
 
-        axios.post("http://localhost:5000/habits/add", habit)
+        axios.post(root + "/habits/add", habit)
             .then(res => console.log(res.data));
 
         window.location = "/habit-list";
@@ -111,8 +113,9 @@ class CreateHabit extends Component {
 
     render() {
         return (
+            
             <div>
-                <h1>Create A New Habit Log</h1>
+                <h1>Log a Habit</h1>
                 <div className="row"></div>
                     <div className="col-sm-8 mx-auto">
                         <form onSubmit={this.onSubmit} className="text-left add-habit-form">
@@ -222,7 +225,7 @@ class CreateHabit extends Component {
                             <div className="form-group grid-span-2 mx-auto">
                                 <input
                                     type="submit"
-                                    value="Add a Habit"
+                                    value="Add Habit"
                                     className="btn btn-primary"
                                 />
                             </div>
