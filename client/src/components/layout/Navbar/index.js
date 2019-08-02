@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './style.css';
+import "./style.css";
 import Login from "../../auth/Login"
 
 class Navbar extends Component {

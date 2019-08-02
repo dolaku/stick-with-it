@@ -16,11 +16,21 @@ class HabitList extends Component {
     }
 
     componentDidMount() {
-        axios.get(root + "/habits/")
-            .then(res => {
-                this.setState({ habits: res.data })
-            })
-            .catch(err => console.log(err))
+
+        let auth = document.getElementById("user-greeting");
+        if (auth) {
+            auth = auth.getAttribute("data-user");
+            
+            axios.get(root + "/habits/")
+                .then(res => {
+                    let data = res.data;
+    
+                    // filter by user 
+                    data = data.filter(item => item.user === auth);
+                    this.setState({ habits: data })
+                })
+                .catch(err => console.log(err))
+        }
     }
 
     deleteHabit(id) {

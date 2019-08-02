@@ -65,6 +65,7 @@ class Login extends Component {
                 email: "",
                 photo: ""
             })
+            window.location = "/";
         }
 
 
