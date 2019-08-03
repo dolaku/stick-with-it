@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import EachHabit from "../EachHabit";
+import Public from "../../auth/Public";
 
 const root = "http://localhost:5000";
 
@@ -11,7 +13,8 @@ class HabitList extends Component {
         this.deleteHabit = this.deleteHabit.bind(this);
 
         this.state = {
-            habits: []
+            habits: [],
+            authenticated: false
         };
     }
 
@@ -20,6 +23,7 @@ class HabitList extends Component {
         let auth = document.getElementById("user-greeting");
         if (auth) {
             auth = auth.getAttribute("data-user");
+            this.setState({authenticated: true});
             
             axios.get(root + "/habits/")
                 .then(res => {
@@ -51,24 +55,31 @@ class HabitList extends Component {
     render() {
         return (
             <div>
-                <h1>Habit List</h1>
-                <table className="table mt-3">
-                    <thead className="thead-light">
-                        <tr>
-                            <th>User</th>
-                            <th>Habit</th>
-                            <th>Type</th>
-                            <th>Duration</th>
-                            <th>Sets - Reps</th>
-                            <th>Notes</th>
-                            <th>Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.habitList() }
-                    </tbody>
-                </table>
+                {
+                    this.state.authenticated ? (
+                        <div>
+                            <h1>Habit List</h1>
+                            <table className="table mt-3">
+                                <thead className="thead-light">
+                                    <tr>
+                                        <th>Habit</th>
+                                        <th>Type</th>
+                                        <th>Duration</th>
+                                        <th>Sets - Reps</th>
+                                        <th>Notes</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    { this.habitList() }
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : (
+                        <Public />
+                    )
+                }
             </div>
         )
     }

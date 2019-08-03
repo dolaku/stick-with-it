@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./style.css";
 
+import auth from "./Auth";
 import GoogleLogin from "react-google-login";
 import GoogleLogout from 'react-google-login';
 
@@ -21,10 +22,11 @@ class Login extends Component {
         }
     }
 
-    render() {
+    render(props) {
 
        
         const login = (res) => {
+            const { history } = this.props;
             
             this.setState({
                 isSignedIn: true,
@@ -54,11 +56,13 @@ class Login extends Component {
                         axios.post(root + "/users/add", user)
                             .then(() => console.log(user));
                     }
+                    history.push("/");
                 })
         }
 
         const logout = () => {
             this.setState({
+                redirectToReferrer: false,
                 isSignedIn: false,
                 name: "",
                 firstName: "",

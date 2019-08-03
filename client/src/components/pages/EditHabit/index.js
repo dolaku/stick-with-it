@@ -40,7 +40,7 @@ class EditHabit extends Component {
     // a React lifecycle method - auto executed
     // loads this block right before anything renders to the page
     componentDidMount() {
-        axios.get("http://localhost:5000/habits/" + this.props.match.params.id)
+        axios.get(root + "/habits/" + this.props.match.params.id)
             .then(res => {
                 this.setState({
                     user: res.data.user,
