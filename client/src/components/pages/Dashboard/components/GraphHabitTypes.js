@@ -65,7 +65,19 @@ class GraphHabitTypes extends Component {
                                 data: uniqueLabelsCounts,
                                 backgroundColor: "#0056b3"
                             }
-                        ]
+                        ],
+                        options: {
+                            scales: {
+                                xAxes: [{
+                                    ticks: {
+                                        beginAtZero: true,
+                                        min: 0,
+                                        stepSize: 1,
+                                        max: 4
+                                    }
+                                }]
+                            }
+                        }
                     }
                 })
             })
