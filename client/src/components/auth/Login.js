@@ -21,11 +21,10 @@ class Login extends Component {
         }
     }
 
-    render() {
+    
 
        
-        const login = (res) => {
-            
+        login = (res) => {
             this.setState({
                 isSignedIn: true,
                 firstName: res.profileObj.givenName,
@@ -41,8 +40,8 @@ class Login extends Component {
             }
 
             axios.get(root + "/users/")
-                .then((res) => {
-                    const allUsers = res.data;
+                .then((userRes) => {
+                    const allUsers = userRes.data;
                     let emailsArray = [];
 
                     allUsers.forEach(element => {
@@ -54,10 +53,13 @@ class Login extends Component {
                         axios.post(root + "/users/add", user)
                             .then(() => console.log(user));
                     }
+                    this.props.handleState(this.state.email);
                 })
+
+            
         }
 
-        const logout = () => {
+        logout = () => {
             this.setState({
                 isSignedIn: false,
                 name: "",
@@ -69,6 +71,7 @@ class Login extends Component {
         }
 
 
+    render() {
 
         return (
             <div>
@@ -79,7 +82,7 @@ class Login extends Component {
                             <GoogleLogout
                                 className="logout-btn"
                                 buttonText="Logout"
-                                onSuccess={logout}
+                                onSuccess={this.logout}
                             />
                         </div>
                     ) : (
@@ -87,8 +90,8 @@ class Login extends Component {
                             <GoogleLogin
                                 clientId="110658189417-fkks5fvfoco7hecsp4ijidhfn3ktu0o2.apps.googleusercontent.com"
                                 buttonText="LOGIN"
-                                onSuccess={login}
-                                onFailure={login}
+                                onSuccess={this.login}
+                                onFailure={this.login}
                             />
                         </div>
                     )

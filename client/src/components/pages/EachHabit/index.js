@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 // functional React component
 const EachHabit = props => (
     <tr>
-        <td>{props.habit.user}</td>
         <td>{props.habit.habitName}</td>
         <td>{props.habit.type}</td>
         <td>{props.habit.duration} {props.habit.durUnits}</td>
-        <td>{props.habit.sets} sets of {props.habit.reps}</td>
+        <td>Set: {props.habit.sets}, Reps: {props.habit.reps}</td>
         <td>{props.habit.notes}</td>
         <td>{props.habit.date.substring(0, 10)}</td>
         <td>

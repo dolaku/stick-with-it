@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
-import Login from "../../auth/Login"
+import Login from "../../auth/Login";
 
 class Navbar extends Component {
 
-    render() {
+    render(props) {
         return (
             <nav className="navbar navbar-expand-md navbar-light bg-light">
                 <Link to="/" className="navbar-brand fancy-font">Stick With It</Link>
@@ -15,7 +15,7 @@ class Navbar extends Component {
                 
 
                 <div className="nav-right ml-auto text-right">
-                    <Login />
+                    <Login handleState={this.props.handleState}/>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">

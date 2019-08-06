@@ -55,7 +55,6 @@ class HabitList extends Component {
                 <table className="table mt-3">
                     <thead className="thead-light">
                         <tr>
-                            <th>User</th>
                             <th>Habit</th>
                             <th>Type</th>
                             <th>Duration</th>

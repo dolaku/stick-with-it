@@ -1,12 +1,12 @@
 #dashboard-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-auto-rows: minmax(250px, auto);
     grid-gap: 15px;
     grid-template-areas: 
-        "habit-total habit-total time-spent"
-        "a b time-spent"
-        "a c d"
+        "habit-total habit-total habit-total time-spent time-spent"
+        "habit-types habit-types habit-types time-spent time-spent"
+        "a b b c d"
 }
 
 .chartjs-render-monitor {
@@ -26,6 +26,10 @@
 
 #time-spent {
     grid-area: time-spent;
+}
+
+#habit-types {
+    grid-area: habit-types;
 }
 
 #a {

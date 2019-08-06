@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { HorizontalBar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 const root = "http://localhost:5000";
 
-class GraphHabitsTotal extends Component {
+class GraphHabitTypes extends Component {
 
     constructor(props) {
         super(props);
@@ -36,11 +36,11 @@ class GraphHabitsTotal extends Component {
                 let uniqueLabels = [];
                 let uniqueLabelsCounts = [];
                 
-                // get habit labels - filter by user
+                // get habit types - filter by user
                 data = data.filter(item => item.user === this.state.username);
 
                 data.forEach(item => {
-                    dataLabels.push(item.habitName);
+                    dataLabels.push(item.type);
                 })
 
                 for (let i = 0; i < dataLabels.length; i++) {
@@ -75,14 +75,14 @@ class GraphHabitsTotal extends Component {
 
     render() {
         return (
-            <div className="chart" id="habit-total">
-                <HorizontalBar
+            <div className="chart" id="habit-types">
+                <Bar
                     data={this.state.chartData}
                     height={130}
                     options={{
                         title: {
                             display: true,
-                            text: "Number of Habits Logged",
+                            text: "Types of Habits Logged",
                             fontSize: 25
                         }
                     }}
@@ -92,4 +92,4 @@ class GraphHabitsTotal extends Component {
     }
 }
 
-export default GraphHabitsTotal;
+export default GraphHabitTypes;
