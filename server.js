@@ -1,6 +1,8 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const router = require('express').Router();
 
 require('dotenv').config();
 const app = express();
@@ -10,6 +12,9 @@ const PORT = process.env.PORT || 5000;
 // middleware
 app.use(cors());
 app.use(express.json());
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+}
 
 // DB
 const URI = process.env.ATLAS_URI;
@@ -23,6 +28,10 @@ connection.once('open', () => {
 // routes
 const habitsRouter = require('./routes/habits');
 const usersRouter = require('./routes/users');
+
+router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, './client/build/index.html'));
+});
 
 app.use('/habits', habitsRouter);
 app.use('/users', usersRouter);
