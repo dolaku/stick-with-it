@@ -15,11 +15,12 @@ app.use(express.json());
 
 // server static assets
 if (process.env.NODE_ENV === 'production') {
+    console.log("node environment");
     app.use(express.static('client/build'));
 }
 
 // DB
-const URI = process.env.MONGODB_URI;
+const URI = process.env.ATLAS_URI;
 mongoose.connect(URI, { useNewUrlParser: true, useCreateIndex: true });
 const connection = mongoose.connection;
 
