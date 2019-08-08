@@ -5,7 +5,7 @@ import "./style.css";
 import GoogleLogin from "react-google-login";
 import GoogleLogout from 'react-google-login';
 
-const root = "http://localhost:5000";
+const root = "https://stick-with-it.herokuapp.com/";
 
 class Login extends Component {
 
