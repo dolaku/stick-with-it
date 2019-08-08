@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const root = "http://localhost:5000";
+let inputType = document.getElementById("input-type");
 
 class CreateHabit extends Component {
 
@@ -16,24 +17,28 @@ class CreateHabit extends Component {
         this.onChangeType = this.onChangeType.bind(this);
         this.onChangeDuration = this.onChangeDuration.bind(this);
         this.onChangeDurUnits = this.onChangeDurUnits.bind(this);
-        this.onChangeSets = this.onChangeSets.bind(this);
-        this.onChangeReps = this.onChangeReps.bind(this);
         this.onChangeNotes = this.onChangeNotes.bind(this);
+        this.onChangeWeight = this.onChangeWeight.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             user: "",
-            habitName: "",
             type: "",
+            habitName: "",
             duration: 10,
             durUnits: "",
-            sets: 1,
-            reps: 1,
             notes: "",
+            weight: null,
             date: new Date(),
 
-            units: ["sec", "min", "hr", "count", "times/day"]
+            units: ["Min", "Times"],
+            typesArray: ["--Select One--", "Exercise", "Health", "Limit Bad Habits", "Study", "Work"],
+            exerciseArray: ["", "Bicycling", "Climbing", "Dancing", "Hiking", "Running", "Sports", "Stretching", "Walking", "Weight Lifting", "Yoga", "Other"],
+            healthArray: ["", "Checkups", "Meditate", "Sleep", "Track Weight", "Other"],
+            badHabitsArray: ["", "Limit TV Time", "Stop Drug Use", "Stop Smoking", "Other"],
+            study: ["", "Prepare for Exam", "Read a Book", "Review/Practice", "Other"],
+            work: ["", "Apply for a New Job", "Networking", "Organize Computer Files", "Organize Workspace", "Plan the Day", "Other"]
         }
     }
 
@@ -49,15 +54,36 @@ class CreateHabit extends Component {
         this.setState({ user: userEmail});
     }
 
-    // methods to set values
-    onChangehabitName(event) {
-        this.setState({
-            habitName: event.target.value
-        });
+    displayHabitList() {
+        switch (inputType.value) {
+            case "Exercise":
+                this.setState({ notes: "Changed" });
+                break;
+            case "Health":
+
+                break;
+            case "Limit Bad Habits":
+
+                break;
+            case "Study":
+
+                break;
+            case "Work":
+
+                break;
+            default:
+        }
     }
+
+    // methods to set values
     onChangeType(event) {
         this.setState({
             type: event.target.value
+        });
+    }
+    onChangehabitName(event) {
+        this.setState({
+            habitName: event.target.value
         });
     }
     onChangeDuration(event) {
@@ -70,19 +96,14 @@ class CreateHabit extends Component {
             durUnits: event.target.value
         });
     }
-    onChangeSets(event) {
-        this.setState({
-            sets: event.target.value
-        });
-    }
-    onChangeReps(event) {
-        this.setState({
-            reps: event.target.value
-        });
-    }
     onChangeNotes(event) {
         this.setState({
             notes: event.target.value
+        });
+    }
+    onChangeWeight(event) {
+        this.setState({
+            weight: event.target.value
         });
     }
     onChangeDate(date) {
@@ -99,16 +120,15 @@ class CreateHabit extends Component {
             type: this.state.type,
             duration: this.state.duration,
             durUnits: this.state.durUnits,
-            sets: this.state.sets,
-            reps: this.state.reps,
             notes: this.state.notes,
+            weight: this.state.weight,
             date: this.state.date
         }
 
         axios.post(root + "/habits/add", habit)
             .then(res => console.log(res.data));
 
-        // window.location = "/dashboard";
+        window.location = "/dashboard";
     }
 
     render() {
@@ -131,33 +151,56 @@ class CreateHabit extends Component {
                             </div>
 
                             <div>
-                                <label>Habit: </label>
-                                <input
-                                    type="text"
-                                    required
-                                    className="form-control"
-                                    value={this.state.habitName}
-                                    onChange={this.onChangehabitName}
-                                />
-                            </div>
-
-                            <div>
                                 <label>Type: </label>
-                                <input
-                                    type="text"
+                                <select ref={this.textInput}
                                     required
                                     className="form-control"
+                                    id="input-type"
                                     value={this.state.type}
-                                    onChange={this.onChangeType}
-                                />
+                                    onChange={this.onChangeType}>
+                                    {
+                                        this.state.typesArray.map(function (type) {
+                                            return (
+                                                <option
+                                                    key={type}
+                                                    value={type}>
+                                                    {type}
+                                                </option>
+                                            )
+                                        })
+                                    }
+                                </select>
                             </div>
 
                             <div>
-                                <label>Duration/Amount: </label>
+                                <label>Habit: </label>
+                                <select ref={this.textInput}
+                                    required
+                                    className="form-control"
+                                    id="input-habit"
+                                    value={this.state.habitName}
+                                    onChange={this.onChangeHabitName}>
+                                    {
+                                        this.state.exerciseArray.map(function (exercise) {
+                                            return (
+                                                <option
+                                                    key={exercise}
+                                                    value={exercise}>
+                                                    {exercise}
+                                                </option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                            </div>
+
+                            <div>
+                                <label>Duration: </label>
                                 <input
                                     type="number"
                                     required
                                     className="form-control"
+                                    id="input-duration"
                                     value={this.state.duration}
                                     onChange={this.onChangeDuration}
                                 />
@@ -168,6 +211,7 @@ class CreateHabit extends Component {
                                 <select ref={this.textInput}
                                     required
                                     className="form-control"
+                                    id="input-units"
                                     value={this.state.durUnits}
                                     onChange={this.onChangeDurUnits}>
                                     {
@@ -185,22 +229,13 @@ class CreateHabit extends Component {
                             </div>
 
                             <div>
-                                <label>Sets: </label>
+                                <label>Weight: </label>
                                 <input
                                     type="number"
                                     className="form-control"
-                                    value={this.state.sets}
-                                    onChange={this.onChangeSets}
-                                />
-                            </div>
-
-                            <div>
-                                <label>Reps: </label>
-                                <input
-                                    type="number"
-                                    className="form-control"
-                                    value={this.state.reps}
-                                    onChange={this.onChangeReps}
+                                    id="input-weight"
+                                    value={this.state.weight}
+                                    onChange={this.onChangeWeight}
                                 />
                             </div>
 
@@ -208,6 +243,7 @@ class CreateHabit extends Component {
                                 <label>Notes: </label>
                                 <textarea
                                     className="form-control"
+                                    id="input-notes"
                                     value={this.state.notes}
                                     onChange={this.onChangeNotes}
                                 ></textarea>
@@ -217,6 +253,7 @@ class CreateHabit extends Component {
                                 <label className="mr-2">Date: </label>
                                 <DatePicker
                                     className="form-control"
+                                    id="input-date"
                                     selected={this.state.date}
                                     onChange={this.onChangeDate}
                                 />

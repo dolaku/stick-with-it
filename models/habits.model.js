@@ -5,11 +5,12 @@ const habitSchema = new Schema({
     user: { type: String, required: true },
     habitName: { type: String, required: true },
     type: { type: String, required: true },
-    duration: { type: Number, required: true },
-    durUnits: { type: String, required: true },
-    sets: { type: Number, required: true },
-    reps: { type: Number, required: true },
+    duration: { type: Number },
+    durUnits: { type: String },
+    sets: { type: Number },
+    reps: { type: Number },
     notes: { type: String },
+    weight: { type: Number},
     date: { type: Date, required: true }
 }, {
     timestamps: true

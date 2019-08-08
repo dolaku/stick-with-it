@@ -21,6 +21,7 @@ router.route('/add').post((req, res) => {
     const sets = Number(req.body.sets);
     const reps = Number(req.body.reps);
     const notes = req.body.notes;
+    const weight = req.body.weight;
     const date = req.body.date;
 
     const newHabit = new Habit({
@@ -32,6 +33,7 @@ router.route('/add').post((req, res) => {
         sets,
         reps,
         notes,
+        weight,
         date
     });
 
@@ -69,6 +71,7 @@ router.route('/update/:id').post((req, res) => {
             habit.sets = req.body.sets;
             habit.reps = req.body.reps;
             habit.notes = req.body.notes;
+            habit.weight = req.body.weight;
             habit.date = req.body.date;
 
             habit.save()
