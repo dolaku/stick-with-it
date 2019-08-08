@@ -12,6 +12,8 @@ const PORT = process.env.PORT || 5000;
 // middleware
 app.use(cors());
 app.use(express.json());
+
+// server static assets
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 }
