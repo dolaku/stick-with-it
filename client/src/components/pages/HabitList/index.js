@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import EachHabit from "../EachHabit";
 
-const root = "http://localhost:5000";
+const root = "https://stick-with-it.herokuapp.com/";
 
 class HabitList extends Component {
     constructor(props) {

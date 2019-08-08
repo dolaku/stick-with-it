@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { HorizontalBar } from "react-chartjs-2";
 
-const root = "http://localhost:5000";
+const root = "https://stick-with-it.herokuapp.com/";
 
 class GraphHabitsTotal extends Component {
 

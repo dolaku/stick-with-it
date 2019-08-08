@@ -4,7 +4,7 @@ import "./style.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const root = "http://localhost:5000";
+const root = "https://stick-with-it.herokuapp.com/";
 let inputType = document.getElementById("input-type");
 
 class CreateHabit extends Component {
