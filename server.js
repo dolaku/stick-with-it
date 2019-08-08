@@ -31,7 +31,7 @@ connection.once('open', () => {
 const habitsRouter = require('./routes/habits');
 const usersRouter = require('./routes/users');
 
-router.use(function(req, res) {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
 
