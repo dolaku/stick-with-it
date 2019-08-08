@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // DB
-const URI = process.env.ATLAS_URI;
+const URI = process.env.MONGODB_URI;
 mongoose.connect(URI, { useNewUrlParser: true, useCreateIndex: true });
 const connection = mongoose.connection;
 
