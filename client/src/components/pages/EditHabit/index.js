@@ -4,7 +4,7 @@ import "./style.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const root = "https://stick-with-it.herokuapp.com/";
+const root = "https://stick-with-it.herokuapp.com";
 
 class EditHabit extends Component {
 
