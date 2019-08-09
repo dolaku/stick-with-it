@@ -12,7 +12,7 @@ class EditHabit extends Component {
         super(props);
         this.textInput = React.createRef();
 
-        this.onChangehabitName = this.onChangehabitName.bind(this);
+        this.onChangeHabitName = this.onChangeHabitName.bind(this);
         this.onChangeDuration = this.onChangeDuration.bind(this);
         this.onChangeDurUnits = this.onChangeDurUnits.bind(this);
         this.onChangeNotes = this.onChangeNotes.bind(this);
@@ -184,7 +184,7 @@ class EditHabit extends Component {
         axios.post(root + "/habits/update/" + this.props.match.params.id, habit)
             .then(res => console.log(res.data));
 
-        window.location = "/dashboard";
+        window.location = "/";
     }
 
     render() {
