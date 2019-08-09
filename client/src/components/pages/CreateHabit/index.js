@@ -74,9 +74,7 @@ class CreateHabit extends Component {
                 { value: "Organize Workspace", label: "Organize Workspace" },
                 { value: "Plan the Day", label: "Plan the Day" },
                 { value: "Other Work", label: "Other Work" }
-            ],
-
-            selectOption: null
+            ]
         }
     }
 
@@ -260,12 +258,10 @@ class CreateHabit extends Component {
         axios.post(root + "/habits/add", habit)
             .then(res => console.log(res.data));
 
-        // window.location = "/dashboard";
+        window.location = "/dashboard";
     }
 
     render() {
-        let getTypeInput = document.getElementById("input-habit")
-
         return (
             <div>
                 <h1>Log a Habit</h1>
