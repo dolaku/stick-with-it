@@ -36,19 +36,20 @@ class EditHabit extends Component {
     // a React lifecycle method - auto executed
     // loads this block right before anything renders to the page
     componentDidMount() {
+        console.log(this.props)
         axios.get(root + "/habits/" + this.props.match.params.id)
             .then(res => {
                 console.log(res);
-                this.setState({
-                    user: res.data.user,
-                    habitName: res.data.habitName,
-                    type: res.data.type,
-                    duration: res.data.duration,
-                    durUnits: res.data.durUnits,
-                    notes: res.data.notes,
-                    weight: res.data.weight,
-                    date: new Date(res.data.date)
-                })
+                // this.setState({
+                //     user: res.data.user,
+                //     habitName: res.data.habitName,
+                //     type: res.data.type,
+                //     duration: res.data.duration,
+                //     durUnits: res.data.durUnits,
+                //     notes: res.data.notes,
+                //     weight: res.data.weight,
+                //     date: new Date(res.data.date)
+                // })
             })
             .catch(err => console.log(err));
     }
