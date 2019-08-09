@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 // functional React component
 const EachHabit = props => (
-    console.log(props.habit._id);
     <tr>
         <td>{props.habit.habitName}</td>
         <td>{props.habit.type}</td>

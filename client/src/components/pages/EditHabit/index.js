@@ -29,45 +29,8 @@ class EditHabit extends Component {
             date: new Date(),
 
             units: ["Min", "Times"],
-            typesArray: ["Exercise", "Health", "Study", "Work"],
 
             showWeight: false,
-
-            exerciseOptions: [
-                { value: "Bicycling", label: "Bicycling" },
-                { value: "Climbing", label: "Climbing" },
-                { value: "Dancing", label: "Dancing" },
-                { value: "Hiking", label: "Hiking" },
-                { value: "Running", label: "Running" },
-                { value: "Sports", label: "Sports" },
-                { value: "Stretching", label: "Stretching" },
-                { value: "Walking", label: "Walking" },
-                { value: "Weight Lifting", label: "Weight Lifting" },
-                { value: "Yoga", label: "Yoga" },
-                { value: "Other Exercise", label: "Other Exercise" }
-            ],
-            healthOptions: [
-                { value: "Checkups", label: "Checkups" },
-                { value: "Meditate", label: "Meditate" },
-                { value: "Sleep", label: "Sleep" },
-                { value: "Track Weight", label: "Track Weight" },
-                { value: "Other Health", label: "Other Health" }
-            ],
-            studyOptions: [
-                { value: "Coding", label: "Coding" },
-                { value: "Prepare for Exam", label: "Prepare for Exam" },
-                { value: "Read a Book", label: "Read a Book" },
-                { value: "Review/Practice", label: "Review/Practice" },
-                { value: "Other Study", label: "Other Study" }
-            ],
-            workOptions: [
-                { value: "Apply for a New Job", label: "Apply for a New Job" },
-                { value: "Networking", label: "Networking" },
-                { value: "Organize Computer Files", label: "Organize Computer Files" },
-                { value: "Organize Workspace", label: "Organize Workspace" },
-                { value: "Plan the Day", label: "Plan the Day" },
-                { value: "Other Work", label: "Other Work" }
-            ]
         }
     }
 
@@ -76,6 +39,7 @@ class EditHabit extends Component {
     componentDidMount() {
         axios.get(root + "/habits/" + this.props.match.params.id)
             .then(res => {
+                console.log(res);
                 this.setState({
                     user: res.data.user,
                     habitName: res.data.habitName,
@@ -91,57 +55,6 @@ class EditHabit extends Component {
     }
 
     // methods to set values
-    onChangeHabitName(event) {
-        this.setState({
-            habitName: event.target.value
-        });
-        
-        switch (event.target.value) {
-            case "Bicycling":
-            case "Climbing":
-            case "Dancing":
-            case "Hiking":
-            case "Running":
-            case "Sports":
-            case "Stretching":
-            case "Walking":
-            case "Weight Lifting":
-            case "Yoga":
-            case "Other Exercise":
-                this.setState({ type: "Exercise"})
-                break;
-            case "Checkups":
-            case "Meditate":
-            case "Sleep":
-            case "Track Weight":
-            case "Other Health":
-                this.setState({ type: "Health"})
-                break;
-            case "Coding":
-            case "Prepare for Exam":
-            case "Read a Book":
-            case "Review/Practice":
-            case "Other Study":
-                this.setState({ type: "Study"})
-                break;
-            case "Apply for a New Job":
-            case "Networking":
-            case "Organize Computer Files":
-            case "Organize Workspace":
-            case "Plan the Day":
-            case "Other Work":
-                this.setState({ type: "Work"})
-                break;
-            default:
-        }
-
-        if (event.target.value === "Track Weight") {
-            this.setState({ showWeight: true });
-        } else {
-            
-            this.setState({ showWeight: false });
-        }
-    }
     onChangeDuration(event) {
         this.setState({
             duration: event.target.value
@@ -183,8 +96,6 @@ class EditHabit extends Component {
 
         axios.post(root + "/habits/update/" + this.props.match.params.id, habit)
             .then(res => console.log(res.data));
-
-        window.location = "/";
     }
 
     render() {
@@ -207,71 +118,19 @@ class EditHabit extends Component {
 
                         <div>
                             <label>Habit: </label>
-                            <select ref={this.textInput}
+                            <input
+                                disabled
+                                type="text"
                                 required
                                 className="form-control"
-                                id="input-habit"
-                                value={this.state.habitName}
-                                onChange={this.onChangeHabitName}>
-                                <option>Select One</option>
-                                <option disabled>--EXERCISE--</option>
-                                {
-                                    this.state.exerciseOptions.map(function (item) {
-                                        return (
-                                            <option
-                                                data-type="Exercise"
-                                                key={item.value}
-                                                value={item.value}>
-                                                {item.value}
-                                            </option>
-                                        )
-                                    })
-                                }
-                                <option disabled>--HEALTH--</option>
-                                {
-                                    this.state.healthOptions.map(function (item) {
-                                        return (
-                                            <option
-                                            data-type="Health"
-                                                key={item.value}
-                                                value={item.value}>
-                                                {item.value}
-                                            </option>
-                                        )
-                                    })
-                                }
-                                <option disabled>--STUDY--</option>
-                                {
-                                    this.state.studyOptions.map(function (item) {
-                                        return (
-                                            <option
-                                            data-type="Study"
-                                                key={item.value}
-                                                value={item.value}>
-                                                {item.value}
-                                            </option>
-                                        )
-                                    })
-                                }
-                                <option disabled>--WORK--</option>
-                                {
-                                    this.state.workOptions.map(function (item) {
-                                        return (
-                                            <option
-                                            data-type="Work"
-                                                key={item.value}
-                                                value={item.value}>
-                                                {item.value}
-                                            </option>
-                                        )
-                                    })
-                                }
-                            </select>
+                                value={ this.state.habitName }
+                            />
                         </div>
 
                         <div>
                             <label>Type: </label>
                             <input
+                                disabled
                                 type="text"
                                 required
                                 className="form-control"
@@ -349,7 +208,7 @@ class EditHabit extends Component {
                         <div className="form-group grid-span-2 mx-auto">
                             <input
                                 type="submit"
-                                value="Add Habit"
+                                value="Update"
                                 className="btn btn-primary"
                             />
                         </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Pie } from "react-chartjs-2";
+import { Radar } from "react-chartjs-2";
 
 const root = "https://stick-with-it.herokuapp.com";
 
@@ -76,7 +76,7 @@ class GraphHabitsTotal extends Component {
     render() {
         return (
             <div className="chart" id="time-spent">
-                <Pie
+                <Radar
                     data={this.state.chartData}
                     height={500}
                     options={{

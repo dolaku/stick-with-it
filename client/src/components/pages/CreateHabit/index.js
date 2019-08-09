@@ -258,7 +258,6 @@ class CreateHabit extends Component {
         axios.post(root + "/habits/add", habit)
             .then(res => console.log(res.data));
 
-        window.location = "/";
     }
 
     render() {
