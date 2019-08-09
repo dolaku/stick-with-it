@@ -12,7 +12,6 @@ class EditHabit extends Component {
         super(props);
         this.textInput = React.createRef();
 
-        this.onChangeHabitName = this.onChangeHabitName.bind(this);
         this.onChangeDuration = this.onChangeDuration.bind(this);
         this.onChangeDurUnits = this.onChangeDurUnits.bind(this);
         this.onChangeNotes = this.onChangeNotes.bind(this);
@@ -101,7 +100,7 @@ class EditHabit extends Component {
     render() {
         return (
             <div>
-                <h1>Log a Habit</h1>
+                <h1>Edit a Habit Log</h1>
                 <div className="row"></div>
                 <div className="col-sm-8 mx-auto">
                     <form onSubmit={this.onSubmit} className="text-left add-habit-form" novalidate>
