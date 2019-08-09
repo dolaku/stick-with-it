@@ -36,7 +36,7 @@ class EditHabit extends Component {
     // a React lifecycle method - auto executed
     // loads this block right before anything renders to the page
     componentDidMount() {
-        console.log(this.props.match.id)
+        console.log(this.props.match.params.id)
         // axios.get(root + "/habits/" + this.props.match.params.id)
         //     .then(res => {
         //         console.log(res);

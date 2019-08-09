@@ -33,11 +33,6 @@ class HabitList extends Component {
         }
     }
 
-    editHabit(id) {
-        axios.post(root + "/habits/" + id)
-            .then(res => console.log(res.data));
-    }
-
     deleteHabit(id) {
         axios.delete(root + "/habits/" + id)
             .then(res => console.log(res.data));
