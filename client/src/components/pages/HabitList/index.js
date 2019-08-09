@@ -38,13 +38,13 @@ class HabitList extends Component {
             .then(res => console.log(res.data));
 
         this.setState({
-            habits: this.state.habits.filter(item => item._id !== id)
+            habits: this.state.habits.filter(item => item._id.$oid !== id)
         })
     }
 
     habitList() {
         return this.state.habits.map(currentHabit => {
-            return <EachHabit habit={currentHabit} deleteHabit={this.deleteHabit} key={currentHabit._id} />;
+            return <EachHabit habit={currentHabit} deleteHabit={this.deleteHabit} key={currentHabit._id.$oid} />;
         })
     }
 
@@ -58,7 +58,6 @@ class HabitList extends Component {
                             <th>Habit</th>
                             <th>Type</th>
                             <th>Duration</th>
-                            <th>Sets - Reps</th>
                             <th>Notes</th>
                             <th>Date</th>
                             <th>Actions</th>

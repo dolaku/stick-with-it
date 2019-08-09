@@ -7,7 +7,6 @@ const EachHabit = props => (
         <td>{props.habit.habitName}</td>
         <td>{props.habit.type}</td>
         <td>{props.habit.duration} {props.habit.durUnits}</td>
-        <td>Set: {props.habit.sets}, Reps: {props.habit.reps}</td>
         <td>{props.habit.notes}</td>
         <td>{props.habit.date.substring(0, 10)}</td>
         <td>
