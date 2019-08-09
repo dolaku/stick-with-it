@@ -7,8 +7,6 @@ const habitSchema = new Schema({
     type: { type: String, required: true },
     duration: { type: Number },
     durUnits: { type: String },
-    sets: { type: Number },
-    reps: { type: Number },
     notes: { type: String },
     weight: { type: Number},
     date: { type: Date, required: true }

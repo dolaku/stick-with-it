@@ -18,10 +18,8 @@ router.route('/add').post((req, res) => {
     const type = req.body.type;
     const duration = Number(req.body.duration);
     const durUnits = req.body.durUnits;
-    const sets = Number(req.body.sets);
-    const reps = Number(req.body.reps);
     const notes = req.body.notes;
-    const weight = req.body.weight;
+    const weight = Number(req.body.weight);
     const date = req.body.date;
 
     const newHabit = new Habit({
@@ -30,8 +28,6 @@ router.route('/add').post((req, res) => {
         type,
         duration,
         durUnits,
-        sets,
-        reps,
         notes,
         weight,
         date
@@ -68,8 +64,6 @@ router.route('/update/:id').post((req, res) => {
             habit.type = req.body.type;
             habit.duration = req.body.duration;
             habit.durUnits = req.body.durUnits;
-            habit.sets = req.body.sets;
-            habit.reps = req.body.reps;
             habit.notes = req.body.notes;
             habit.weight = req.body.weight;
             habit.date = req.body.date;
