@@ -17,7 +17,7 @@
 .chart {
     border: #ddd solid 1px;
     border-radius: 10px;
-    padding: 20px 35px;
+    padding: 20px;
 }
 
 #habit-total {
@@ -43,4 +43,15 @@
 }
 #d {
     grid-area: d;
+}
+
+@media only screen and (max-width: 950px) {
+    #dashboard-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+            "habit-total habit-total habit-total habit-total"
+            "habit-types habit-types habit-types time-spent"
+            "a b b c"
+            "d d d d"
+    }
 }
