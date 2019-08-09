@@ -53,7 +53,7 @@ class EditHabit extends Component {
                     durUnits: res.data.durUnits,
                     notes: res.data.notes,
                     weight: res.data.weight,
-                    date: new Date(res.data.date)
+                    date: res.data.date
                 })
             })
             .catch(err => console.log(err));
