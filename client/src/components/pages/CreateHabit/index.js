@@ -3,10 +3,9 @@ import axios from "axios";
 import "./style.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+// import Select from "react-select";
 
 const root = "https://stick-with-it.herokuapp.com";
-let inputType;
-// let options;
 
 class CreateHabit extends Component {
 
@@ -14,8 +13,8 @@ class CreateHabit extends Component {
         super(props);
         this.textInput = React.createRef();
 
-        this.onChangehabitName = this.onChangehabitName.bind(this);
-        this.onChangeType = this.onChangeType.bind(this);
+        this.onChangeHabitName = this.onChangeHabitName.bind(this);
+        // this.onChangeType = this.onChangeType.bind(this);
         this.onChangeDuration = this.onChangeDuration.bind(this);
         this.onChangeDurUnits = this.onChangeDurUnits.bind(this);
         this.onChangeNotes = this.onChangeNotes.bind(this);
@@ -30,15 +29,54 @@ class CreateHabit extends Component {
             duration: 10,
             durUnits: "",
             notes: "",
-            weight: null,
+            weight: "",
             date: new Date(),
 
             units: ["Min", "Times"],
-            typesArray: ["--Select One--", "Exercise", "Health", "Study", "Work"],
-            exerciseArray: ["--Select One--", "Bicycling", "Climbing", "Dancing", "Hiking", "Running", "Sports", "Stretching", "Walking", "Weight Lifting", "Yoga", "Other"],
-            healthArray: ["--Select One--", "Checkups", "Meditate", "Sleep", "Track Weight", "Other"],
-            study: ["--Select One--", "Coding", "Prepare for Exam", "Read a Book", "Review/Practice", "Other"],
-            work: ["--Select One--", "Apply for a New Job", "Networking", "Organize Computer Files", "Organize Workspace", "Plan the Day", "Other"]
+            typesArray: ["Exercise", "Health", "Study", "Work"],
+            // typeIsExercise: false,
+            // typeIsHealth: false,
+            // typeIsStudy: false,
+            // typeIsWork: false,
+            showWeight: false,
+
+            exerciseOptions: [
+                { value: "Bicycling", label: "Bicycling" },
+                { value: "Climbing", label: "Climbing" },
+                { value: "Dancing", label: "Dancing" },
+                { value: "Hiking", label: "Hiking" },
+                { value: "Running", label: "Running" },
+                { value: "Sports", label: "Sports" },
+                { value: "Stretching", label: "Stretching" },
+                { value: "Walking", label: "Walking" },
+                { value: "Weight Lifting", label: "Weight Lifting" },
+                { value: "Yoga", label: "Yoga" },
+                { value: "Other Exercise", label: "Other Exercise" }
+            ],
+            healthOptions: [
+                { value: "Checkups", label: "Checkups" },
+                { value: "Meditate", label: "Meditate" },
+                { value: "Sleep", label: "Sleep" },
+                { value: "Track Weight", label: "Track Weight" },
+                { value: "Other Health", label: "Other Health" }
+            ],
+            studyOptions: [
+                { value: "Coding", label: "Coding" },
+                { value: "Prepare for Exam", label: "Prepare for Exam" },
+                { value: "Read a Book", label: "Read a Book" },
+                { value: "Review/Practice", label: "Review/Practice" },
+                { value: "Other Study", label: "Other Study" }
+            ],
+            workOptions: [
+                { value: "Apply for a New Job", label: "Apply for a New Job" },
+                { value: "Networking", label: "Networking" },
+                { value: "Organize Computer Files", label: "Organize Computer Files" },
+                { value: "Organize Workspace", label: "Organize Workspace" },
+                { value: "Plan the Day", label: "Plan the Day" },
+                { value: "Other Work", label: "Other Work" }
+            ],
+
+            selectOption: null
         }
     }
 
@@ -55,40 +93,58 @@ class CreateHabit extends Component {
     }
 
 
-    displayHabitList() {
-        switch (inputType) {
-            case "Exercise":
-                console.log(inputType);
-                this.generateHabitList(this.state.exerciseArray);
-                break;
-            case "Health":
-                console.log(inputType);
-                this.generateHabitList(this.state.healthArray);
-                break;
-            case "Limit Bad Habits":
+    // displayHabitList() {
+    //     switch (inputType) {
+    //         case "Exercise":
+    //             console.log(inputType);
+    //             this.setState({ typeIsExercise: true });
+    //             this.setState({ typeIsHealth: false });
+    //             this.setState({ typeIsStudy: false });
+    //             this.setState({ typeIsWork: false });
+    //             break;
+    //         case "Health":
+    //             console.log(inputType);
+    //             this.setState({ typeIsExercise: false });
+    //             this.setState({ typeIsHealth: true });
+    //             this.setState({ typeIsStudy: false });
+    //             this.setState({ typeIsWork: false });
+    //             break;
+    //         case "Study":
+    //             console.log(inputType);
+    //             this.setState({ typeIsExercise: false });
+    //             this.setState({ typeIsHealth: false });
+    //             this.setState({ typeIsStudy: true });
+    //             this.setState({ typeIsWork: false });
+    //             break;
+    //         case "Work":
+    //             console.log(inputType);
+    //             this.setState({ typeIsExercise: false });
+    //             this.setState({ typeIsHealth: false });
+    //             this.setState({ typeIsStudy: false });
+    //             this.setState({ typeIsWork: true });
+    //             break;
+    //         default:
+    //             return <option>Choose Habit Type</option>
+    //     }
+    // }
 
-                break;
-            case "Study":
+    // generateHabitList(optionList) {
+        // const { selectedOption } = this.state;
+        // <Select
+        //     value={selectedOption}
+        //     onChange={this.handleSelectChange}
+        //     options={optionList}
+        // />
 
-                break;
-            case "Work":
-
-                break;
-            default:
-                return <option>Choose Habit Type</option>
-        }
-    }
-
-    generateHabitList(array) {
-        array.map(function (choice) {
-            return (
-                <option
-                    key={choice}
-                    value={choice}>
-                    {choice}
-                </option>
-            )
-        })
+        // array.map(function (choice) {
+        //     return (
+        //         <option
+        //             key={choice}
+        //             value={choice}>
+        //             {choice}
+        //         </option>
+        //     )
+        // })
 
         // console.log(array)
         // for (let i = 0; i < array.length; i++) {
@@ -96,19 +152,72 @@ class CreateHabit extends Component {
         // }
         // console.log(options);
         // return options;
-    }
+    // }
 
     // methods to set values
-    onChangeType(event) {
-        this.setState({
-            type: event.target.value
-        });
-        inputType = document.getElementById("input-type").value;
-    }
-    onChangehabitName(event) {
+    // handleSelectChange = (selectedOption) => {
+    //     this.setState({ selectedOption });
+    //     console.log(`Option selected:`, selectedOption);
+    //     // this.displayHabitList();
+    // }
+
+    // onChangeType(event) {
+    //     // if (event.target.value)
+    //     this.setState({
+    //         type: event.target.value
+    //     });
+    // }
+    onChangeHabitName(event) {
         this.setState({
             habitName: event.target.value
         });
+        
+        switch (event.target.value) {
+            case "Bicycling":
+            case "Climbing":
+            case "Dancing":
+            case "Hiking":
+            case "Running":
+            case "Sports":
+            case "Stretching":
+            case "Walking":
+            case "Weight Lifting":
+            case "Yoga":
+            case "Other Exercise":
+                this.setState({ type: "Exercise"})
+                break;
+            case "Checkups":
+            case "Meditate":
+            case "Sleep":
+            case "Track Weight":
+            case "Other Health":
+                this.setState({ type: "Health"})
+                break;
+            case "Coding":
+            case "Prepare for Exam":
+            case "Read a Book":
+            case "Review/Practice":
+            case "Other Study":
+                this.setState({ type: "Study"})
+                break;
+            case "Apply for a New Job":
+            case "Networking":
+            case "Organize Computer Files":
+            case "Organize Workspace":
+            case "Plan the Day":
+            case "Other Work":
+                this.setState({ type: "Work"})
+                break;
+            default:
+        }
+
+        if (event.target.value === "Track Weight") {
+            console.log("show weight field");
+            this.setState({ showWeight: true });
+        } else {
+            
+            this.setState({ showWeight: false });
+        }
     }
     onChangeDuration(event) {
         this.setState({
@@ -156,8 +265,9 @@ class CreateHabit extends Component {
     }
 
     render() {
-        return (
+        let getTypeInput = document.getElementById("input-habit")
 
+        return (
             <div>
                 <h1>Log a Habit</h1>
                 <div className="row"></div>
@@ -175,13 +285,84 @@ class CreateHabit extends Component {
                         </div>
 
                         <div>
-                            <label>Type: </label>
+                            <label>Habit: </label>
                             <select ref={this.textInput}
+                                required
+                                className="form-control"
+                                id="input-habit"
+                                value={this.state.habitName}
+                                onChange={this.onChangeHabitName}>
+                                <option>Select One</option>
+                                <option disabled>--EXERCISE--</option>
+                                {
+                                    this.state.exerciseOptions.map(function (item) {
+                                        return (
+                                            <option
+                                                data-type="Exercise"
+                                                key={item.value}
+                                                value={item.value}>
+                                                {item.value}
+                                            </option>
+                                        )
+                                    })
+                                }
+                                <option disabled>--HEALTH--</option>
+                                {
+                                    this.state.healthOptions.map(function (item) {
+                                        return (
+                                            <option
+                                            data-type="Health"
+                                                key={item.value}
+                                                value={item.value}>
+                                                {item.value}
+                                            </option>
+                                        )
+                                    })
+                                }
+                                <option disabled>--STUDY--</option>
+                                {
+                                    this.state.studyOptions.map(function (item) {
+                                        return (
+                                            <option
+                                            data-type="Study"
+                                                key={item.value}
+                                                value={item.value}>
+                                                {item.value}
+                                            </option>
+                                        )
+                                    })
+                                }
+                                <option disabled>--WORK--</option>
+                                {
+                                    this.state.workOptions.map(function (item) {
+                                        return (
+                                            <option
+                                            data-type="Work"
+                                                key={item.value}
+                                                value={item.value}>
+                                                {item.value}
+                                            </option>
+                                        )
+                                    })
+                                }
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Type: </label>
+                            <input
+                                type="text"
+                                required
+                                className="form-control"
+                                value={ this.state.type }
+                            />
+                            {/* <select ref={this.textInput}
                                 required
                                 className="form-control"
                                 id="input-type"
                                 value={this.state.type}
                                 onChange={this.onChangeType}>
+                                <option>Select One</option>
                                 {
                                     this.state.typesArray.map(function (type) {
                                         return (
@@ -193,25 +374,11 @@ class CreateHabit extends Component {
                                         )
                                     })
                                 }
-                            </select>
+                            </select> */}
                         </div>
 
                         <div>
-                            <label>Habit: </label>
-                            <select ref={this.textInput}
-                                required
-                                className="form-control"
-                                id="input-habit"
-                                value={this.state.habitName}
-                                onChange={this.onChangeHabitName}>
-                                {
-                                    this.displayHabitList()
-                                }
-                            </select>
-                        </div>
-
-                        <div>
-                            <label>Duration: </label>
+                            <label>Duration or Frequency: </label>
                             <input
                                 type="number"
                                 required
@@ -244,8 +411,10 @@ class CreateHabit extends Component {
                             </select>
                         </div>
 
-                        <div>
-                            <label>Weight: </label>
+                        <div className={
+                            !this.state.showWeight ? "d-none" : null
+                        }>
+                            <label>Weight (lbs): </label>
                             <input
                                 type="number"
                                 className="form-control"
