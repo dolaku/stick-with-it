@@ -19,6 +19,8 @@ class EditHabit extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
+            habitID: "",
+
             user: "",
             habitName: "",
             type: "",
@@ -36,7 +38,10 @@ class EditHabit extends Component {
     // a React lifecycle method - auto executed
     // loads this block right before anything renders to the page
     componentDidMount() {
-        console.log(window.location.href);
+        let getID = window.location.href;
+        getID = getID.substring(42,66)
+// https://stick-with-it.herokuapp.com/edit/5d4daccb8a40fb002ac1977c
+        console.log(getID);
         // axios.get(root + "/habits/" + this.props.match.params.id)
         //     .then(res => {
         //         console.log(res);
