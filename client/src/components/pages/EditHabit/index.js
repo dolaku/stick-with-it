@@ -45,20 +45,24 @@ class EditHabit extends Component {
         axios.get(root + "/habits/" + this.state.habitID)
             .then(res => {
                 console.log(res.data);
-                this.setState({
-                    user: res.data.user,
-                    habitName: res.data.habitName,
-                    type: res.data.type,
-                    duration: res.data.duration,
-                    durUnits: res.data.durUnits,
-                    notes: res.data.notes,
-                    weight: res.data.weight,
-                    date: res.data.date
+                res.data.map(item => {
+                    if (item._id === this.state.habitID) {
+                        console.log(item);
+                        this.setState({
+                            user: item.user,
+                            habitName: item.habitName,
+                            type: item.type,
+                            duration: item.duration,
+                            durUnits: item.durUnits,
+                            notes: item.notes,
+                            weight: item.weight,
+                            date: item.date
+                        })
+                    }
                 })
             })
             .catch(err => console.log(err));
 
-            console.log(this.state);
     }
 
     // methods to set values
