@@ -5,6 +5,7 @@ import Navbar from "./components/layout/Navbar"
 import Footer from "./components/layout/Footer"
 import Dashboard from "./components/pages/Dashboard"
 import CreateHabit from "./components/pages/CreateHabit"
+import EditHabit from "./components/pages/EditHabit"
 import HabitList from "./components/pages/HabitList"
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
               <Route path="/" exact render={routeProps => (<Dashboard {...routeProps} email={this.state.email} />)} />
               <Route path="/create/" component={CreateHabit} />
               <Route path="/habit-list" component={HabitList} />
+              <Route path="/edit" component={EditHabit} />
             </Switch>
           </div>
           <Footer />
