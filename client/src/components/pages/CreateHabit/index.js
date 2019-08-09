@@ -5,7 +5,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const root = "https://stick-with-it.herokuapp.com";
-let inputType = document.getElementById("input-type");
+let inputType;
+// let options;
 
 class CreateHabit extends Component {
 
@@ -33,12 +34,11 @@ class CreateHabit extends Component {
             date: new Date(),
 
             units: ["Min", "Times"],
-            typesArray: ["--Select One--", "Exercise", "Health", "Limit Bad Habits", "Study", "Work"],
-            exerciseArray: ["", "Bicycling", "Climbing", "Dancing", "Hiking", "Running", "Sports", "Stretching", "Walking", "Weight Lifting", "Yoga", "Other"],
-            healthArray: ["", "Checkups", "Meditate", "Sleep", "Track Weight", "Other"],
-            badHabitsArray: ["", "Limit TV Time", "Stop Drug Use", "Stop Smoking", "Other"],
-            study: ["", "Prepare for Exam", "Read a Book", "Review/Practice", "Other"],
-            work: ["", "Apply for a New Job", "Networking", "Organize Computer Files", "Organize Workspace", "Plan the Day", "Other"]
+            typesArray: ["--Select One--", "Exercise", "Health", "Study", "Work"],
+            exerciseArray: ["--Select One--", "Bicycling", "Climbing", "Dancing", "Hiking", "Running", "Sports", "Stretching", "Walking", "Weight Lifting", "Yoga", "Other"],
+            healthArray: ["--Select One--", "Checkups", "Meditate", "Sleep", "Track Weight", "Other"],
+            study: ["--Select One--", "Coding", "Prepare for Exam", "Read a Book", "Review/Practice", "Other"],
+            work: ["--Select One--", "Apply for a New Job", "Networking", "Organize Computer Files", "Organize Workspace", "Plan the Day", "Other"]
         }
     }
 
@@ -51,16 +51,19 @@ class CreateHabit extends Component {
             userEmail = username.getAttribute("data-user");
         }
 
-        this.setState({ user: userEmail});
+        this.setState({ user: userEmail });
     }
 
+
     displayHabitList() {
-        switch (inputType.value) {
+        switch (inputType) {
             case "Exercise":
-                this.setState({ notes: "Changed" });
+                console.log(inputType);
+                this.generateHabitList(this.state.exerciseArray);
                 break;
             case "Health":
-
+                console.log(inputType);
+                this.generateHabitList(this.state.healthArray);
                 break;
             case "Limit Bad Habits":
 
@@ -72,7 +75,27 @@ class CreateHabit extends Component {
 
                 break;
             default:
+                return <option>Choose Habit Type</option>
         }
+    }
+
+    generateHabitList(array) {
+        array.map(function (choice) {
+            return (
+                <option
+                    key={choice}
+                    value={choice}>
+                    {choice}
+                </option>
+            )
+        })
+
+        // console.log(array)
+        // for (let i = 0; i < array.length; i++) {
+        //     options += <option key={array[i]} value={array[i]}>array[i]</option>
+        // }
+        // console.log(options);
+        // return options;
     }
 
     // methods to set values
@@ -80,6 +103,7 @@ class CreateHabit extends Component {
         this.setState({
             type: event.target.value
         });
+        inputType = document.getElementById("input-type").value;
     }
     onChangehabitName(event) {
         this.setState({
@@ -133,141 +157,133 @@ class CreateHabit extends Component {
 
     render() {
         return (
-            
+
             <div>
                 <h1>Log a Habit</h1>
                 <div className="row"></div>
-                    <div className="col-sm-8 mx-auto">
-                        <form onSubmit={this.onSubmit} className="text-left add-habit-form">
+                <div className="col-sm-8 mx-auto">
+                    <form onSubmit={this.onSubmit} className="text-left add-habit-form">
 
-                            <div className="userform-group d-none grid-span-2 mx-auto">
-                                <label>User: </label>
-                                <input
-                                    type="text"
-                                    required
-                                    className="form-control"
-                                    defaultValue={this.state.user}
-                                />
-                            </div>
+                        <div className="userform-group d-none grid-span-2 mx-auto">
+                            <label>User: </label>
+                            <input
+                                type="text"
+                                required
+                                className="form-control"
+                                defaultValue={this.state.user}
+                            />
+                        </div>
 
-                            <div>
-                                <label>Type: </label>
-                                <select ref={this.textInput}
-                                    required
-                                    className="form-control"
-                                    id="input-type"
-                                    value={this.state.type}
-                                    onChange={this.onChangeType}>
-                                    {
-                                        this.state.typesArray.map(function (type) {
-                                            return (
-                                                <option
-                                                    key={type}
-                                                    value={type}>
-                                                    {type}
-                                                </option>
-                                            )
-                                        })
-                                    }
-                                </select>
-                            </div>
+                        <div>
+                            <label>Type: </label>
+                            <select ref={this.textInput}
+                                required
+                                className="form-control"
+                                id="input-type"
+                                value={this.state.type}
+                                onChange={this.onChangeType}>
+                                {
+                                    this.state.typesArray.map(function (type) {
+                                        return (
+                                            <option
+                                                key={type}
+                                                value={type}>
+                                                {type}
+                                            </option>
+                                        )
+                                    })
+                                }
+                            </select>
+                        </div>
 
-                            <div>
-                                <label>Habit: </label>
-                                <select ref={this.textInput}
-                                    required
-                                    className="form-control"
-                                    id="input-habit"
-                                    value={this.state.habitName}
-                                    onChange={this.onChangeHabitName}>
-                                    {
-                                        this.state.exerciseArray.map(function (exercise) {
-                                            return (
-                                                <option
-                                                    key={exercise}
-                                                    value={exercise}>
-                                                    {exercise}
-                                                </option>
-                                            )
-                                        })
-                                    }
-                                </select>
-                            </div>
+                        <div>
+                            <label>Habit: </label>
+                            <select ref={this.textInput}
+                                required
+                                className="form-control"
+                                id="input-habit"
+                                value={this.state.habitName}
+                                onChange={this.onChangeHabitName}>
+                                {
+                                    this.displayHabitList()
+                                }
+                            </select>
+                        </div>
 
-                            <div>
-                                <label>Duration: </label>
-                                <input
-                                    type="number"
-                                    required
-                                    className="form-control"
-                                    id="input-duration"
-                                    value={this.state.duration}
-                                    onChange={this.onChangeDuration}
-                                />
-                            </div>
+                        <div>
+                            <label>Duration: </label>
+                            <input
+                                type="number"
+                                required
+                                className="form-control"
+                                id="input-duration"
+                                value={this.state.duration}
+                                onChange={this.onChangeDuration}
+                            />
+                        </div>
 
-                            <div>
-                                <label>Units: </label>
-                                <select ref={this.textInput}
-                                    required
-                                    className="form-control"
-                                    id="input-units"
-                                    value={this.state.durUnits}
-                                    onChange={this.onChangeDurUnits}>
-                                    {
-                                        this.state.units.map(function (unit) {
-                                            return (
-                                                <option
-                                                    key={unit}
-                                                    value={unit}>
-                                                    {unit}
-                                                </option>
-                                            )
-                                        })
-                                    }
-                                </select>
-                            </div>
+                        <div>
+                            <label>Units: </label>
+                            <select ref={this.textInput}
+                                required
+                                className="form-control"
+                                id="input-units"
+                                value={this.state.durUnits}
+                                onChange={this.onChangeDurUnits}>
+                                {
+                                    this.state.units.map(function (unit) {
+                                        return (
+                                            <option
+                                                key={unit}
+                                                value={unit}>
+                                                {unit}
+                                            </option>
+                                        )
+                                    })
+                                }
+                            </select>
+                        </div>
 
-                            <div>
-                                <label>Weight: </label>
-                                <input
-                                    type="number"
-                                    className="form-control"
-                                    id="input-weight"
-                                    value={this.state.weight}
-                                    onChange={this.onChangeWeight}
-                                />
-                            </div>
+                        <div>
+                            <label>Weight: </label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                id="input-weight"
+                                value={this.state.weight}
+                                onChange={this.onChangeWeight}
+                            />
+                        </div>
 
-                            <div className="grid-span-2">
-                                <label>Notes: </label>
-                                <textarea
-                                    className="form-control"
-                                    id="input-notes"
-                                    value={this.state.notes}
-                                    onChange={this.onChangeNotes}
-                                ></textarea>
-                            </div>
+                        <div className="grid-span-2">
+                            <label>Notes: </label>
+                            <textarea
+                                className="form-control"
+                                id="input-notes"
+                                value={this.state.notes}
+                                onChange={this.onChangeNotes}
+                            ></textarea>
+                        </div>
 
-                            <div className="grid-span-2 v-align-center mx-auto">
-                                <label className="mr-2">Date: </label>
-                                <DatePicker
-                                    className="form-control"
-                                    id="input-date"
-                                    selected={this.state.date}
-                                    onChange={this.onChangeDate}
-                                />
-                            </div>
+                        <div className="grid-span-2 v-align-center mx-auto">
+                            <label className="mr-2">Date: </label>
+                            <DatePicker
+                                className="form-control"
+                                id="input-date"
+                                selected={this.state.date}
+                                onChange={this.onChangeDate}
+                            />
+                        </div>
 
-                            <div className="form-group grid-span-2 mx-auto">
-                                <input
-                                    type="submit"
-                                    value="Add Habit"
-                                    className="btn btn-primary"
-                                />
-                            </div>
-                        </form>
-                    </div>
+                        <div className="form-group grid-span-2 mx-auto">
+                            <input
+                                type="submit"
+                                value="Add Habit"
+                                className="btn btn-primary"
+                            />
+                        </div>
+                    </form>
+                </div>
             </div>
         )
     }
