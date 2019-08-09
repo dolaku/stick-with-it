@@ -122,6 +122,7 @@ class EditHabit extends Component {
                                 disabled
                                 type="text"
                                 required
+                                id="input-habit"
                                 className="form-control"
                                 value={ this.state.habitName }
                             />
@@ -133,6 +134,7 @@ class EditHabit extends Component {
                                 disabled
                                 type="text"
                                 required
+                                id="input-type"
                                 className="form-control"
                                 value={ this.state.type }
                             />

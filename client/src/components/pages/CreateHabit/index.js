@@ -57,7 +57,7 @@ class CreateHabit extends Component {
                 { value: "Checkups", label: "Checkups" },
                 { value: "Meditate", label: "Meditate" },
                 { value: "Sleep", label: "Sleep" },
-                { value: "Track Weight", label: "Track Weight" },
+                // { value: "Track Weight", label: "Track Weight" },
                 { value: "Other Health", label: "Other Health" }
             ],
             studyOptions: [
