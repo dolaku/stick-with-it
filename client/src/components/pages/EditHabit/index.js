@@ -41,23 +41,24 @@ class EditHabit extends Component {
         let getID = window.location.href;
         getID = getID.substring(41,66);
         this.setState({ habitID: getID });
-// https://stick-with-it.herokuapp.com/edit/5d4daccb8a40fb002ac1977c
-        console.log(this.state.habitID);
+
         axios.get(root + "/habits/" + this.state.habitID)
             .then(res => {
-                console.log(res);
-                // this.setState({
-                //     user: res.data.user,
-                //     habitName: res.data.habitName,
-                //     type: res.data.type,
-                //     duration: res.data.duration,
-                //     durUnits: res.data.durUnits,
-                //     notes: res.data.notes,
-                //     weight: res.data.weight,
-                //     date: new Date(res.data.date)
-                // })
+                console.log(res.data);
+                this.setState({
+                    user: res.data.user,
+                    habitName: res.data.habitName,
+                    type: res.data.type,
+                    duration: res.data.duration,
+                    durUnits: res.data.durUnits,
+                    notes: res.data.notes,
+                    weight: res.data.weight,
+                    date: new Date(res.data.date)
+                })
             })
             .catch(err => console.log(err));
+
+            console.log(this.state);
     }
 
     // methods to set values
@@ -100,7 +101,7 @@ class EditHabit extends Component {
             date: this.state.date
         }
 
-        axios.post(root + "/habits/update/" + this.props.match.params.id, habit)
+        axios.post(root + "/habits/update/" + this.state.habitID, habit)
             .then(res => console.log(res.data));
     }
 
