@@ -45,6 +45,7 @@ class EditHabit extends Component {
         axios.get(root + "/habits/" + this.state.habitID)
             .then(res => {
                 console.log(res.data);
+
                 res.data.map(item => {
                     if (item._id === this.state.habitID) {
                         console.log(item);
@@ -55,8 +56,7 @@ class EditHabit extends Component {
                             duration: item.duration,
                             durUnits: item.durUnits,
                             notes: item.notes,
-                            weight: item.weight,
-                            date: item.date
+                            weight: item.weight
                         })
                     }
                 })
