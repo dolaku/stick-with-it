@@ -36,10 +36,10 @@ class EditHabit extends Component {
     // a React lifecycle method - auto executed
     // loads this block right before anything renders to the page
     componentDidMount() {
-        console.log(this.props)
-        axios.get(root + "/habits/" + this.props.match.params.id)
-            .then(res => {
-                console.log(res);
+        console.log(this.props.match.id)
+        // axios.get(root + "/habits/" + this.props.match.params.id)
+        //     .then(res => {
+        //         console.log(res);
                 // this.setState({
                 //     user: res.data.user,
                 //     habitName: res.data.habitName,
@@ -50,8 +50,8 @@ class EditHabit extends Component {
                 //     weight: res.data.weight,
                 //     date: new Date(res.data.date)
                 // })
-            })
-            .catch(err => console.log(err));
+            // })
+            // .catch(err => console.log(err));
     }
 
     // methods to set values
