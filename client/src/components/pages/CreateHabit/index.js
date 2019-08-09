@@ -212,7 +212,6 @@ class CreateHabit extends Component {
         }
 
         if (event.target.value === "Track Weight") {
-            console.log("show weight field");
             this.setState({ showWeight: true });
         } else {
             
@@ -261,7 +260,7 @@ class CreateHabit extends Component {
         axios.post(root + "/habits/add", habit)
             .then(res => console.log(res.data));
 
-        window.location = "/dashboard";
+        // window.location = "/dashboard";
     }
 
     render() {
@@ -272,7 +271,7 @@ class CreateHabit extends Component {
                 <h1>Log a Habit</h1>
                 <div className="row"></div>
                 <div className="col-sm-8 mx-auto">
-                    <form onSubmit={this.onSubmit} className="text-left add-habit-form">
+                    <form onSubmit={this.onSubmit} className="text-left add-habit-form" novalidate>
 
                         <div className="userform-group d-none grid-span-2 mx-auto">
                             <label>User: </label>
