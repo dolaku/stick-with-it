@@ -48,7 +48,27 @@ class GraphHabitsTotal extends Component {
                 data.map(item => {
                     console.log(item.type);
                     console.log(item.duration);
+                    switch (item.type) {
+                        case "Exercise":
+                            exerciseCount += 1;
+                            break;
+                        case "Health":
+                            healthCount += 1;
+                            break;
+                        case "Study":
+                            studyCount += 1;
+                            break;
+                        case "Work":
+                            workCount += 1;
+                            break;
+                        default: null;
+                    }
                 });
+
+                console.log(exerciseCount);
+                console.log(healthCount);
+                console.log(studyCount);
+                console.log(workCount);
 
                 
                 
