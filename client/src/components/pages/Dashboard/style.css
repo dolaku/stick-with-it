@@ -6,7 +6,7 @@
     grid-template-areas: 
         "habit-total habit-total habit-total time-spent time-spent"
         "habit-types habit-types habit-types time-spent time-spent"
-        "a b b c d"
+        "top-stat a b c d"
 }
 
 .chartjs-render-monitor {
@@ -41,8 +41,8 @@
 #c {
     grid-area: c;
 }
-#d {
-    grid-area: d;
+#top-stat {
+    grid-area: top-stat;
 }
 
 @media only screen and (max-width: 950px) {
@@ -51,8 +51,8 @@
         grid-auto-rows: minmax(200px,auto);
         grid-template-areas: 
             "habit-total habit-total habit-total habit-total"
-            "time-spent time-spent a b"
-            "time-spent time-spent c d"
+            "time-spent time-spent top-stat a"
+            "time-spent time-spent b c"
             "habit-types habit-types habit-types habit-types"
     }
 }
@@ -63,6 +63,7 @@
         grid-auto-rows: auto;
         grid-template-areas: 
             "habit-total"
+            "top-stat"
             "time-spent"
             "habit-types";
     

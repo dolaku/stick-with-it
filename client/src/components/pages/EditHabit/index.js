@@ -236,7 +236,7 @@ class EditHabit extends Component {
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="linkDashboard">Success!</h5>
+                                <h3 class="modal-title" id="linkDashboard">Success!</h3>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -245,7 +245,7 @@ class EditHabit extends Component {
                                 This habit log has been updated.
                             </div>
                             <div class="modal-footer">
-                                <Link to="/" type="button" class="btn btn-secondary" data-dismiss="modal">Return to Dashboard</Link>
+                                <Link to="/" class="btn btn-secondary">Return to Dashboard</Link>
                             </div>
                         </div>
                     </div>

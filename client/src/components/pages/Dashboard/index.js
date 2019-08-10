@@ -4,6 +4,7 @@ import "./style.css";
 import HabitTotal from "./components/GraphHabitsTotal";
 import HabitTypes from "./components/GraphHabitTypes";
 import TimeSpent from "./components/GraphTimeSpent";
+import TopStat from "./components/TopStat";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -33,10 +34,10 @@ class Dashboard extends Component {
                     <HabitTotal />
                     <TimeSpent />
                     <HabitTypes />
+                    <TopStat />
                     <div className="chart" id="a">A</div>
                     <div className="chart" id="b">B</div>
                     <div className="chart" id="c">C</div>
-                    <div className="chart" id="d">D</div>
                 </div>
             </div>
         )
