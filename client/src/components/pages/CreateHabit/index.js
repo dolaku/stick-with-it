@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./style.css";
 import DatePicker from "react-datepicker";
@@ -439,11 +440,11 @@ class CreateHabit extends Component {
                         </div>
 
                         <div className="form-group grid-span-2 mx-auto">
-                            <input
+                            <Link
+                                to="/"
                                 type="submit"
-                                value="Add Habit"
                                 className="btn btn-primary"
-                            />
+                            >Add Habit</Link>
                         </div>
                     </form>
                 </div>
