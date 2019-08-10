@@ -62,13 +62,17 @@ class GraphHabitsTotal extends Component {
                     }
                 });
 
+                exerciseCount = exerciseCount/60;
+                healthCount = healthCount/60;
+                studyCount = studyCount/60;
+                workCount = workCount/60
                 
                 this.setState({
                     chartData: {
                         labels: ["Exercise", "Health", "Study", "Work"],
                         datasets: [
                             {
-                                label: "Minutes",
+                                label: "Hours",
                                 data: [exerciseCount, healthCount, studyCount, workCount],
                                 backgroundColor: "#0056b380"
                             }
