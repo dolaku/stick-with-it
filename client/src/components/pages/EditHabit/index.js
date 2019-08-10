@@ -232,7 +232,7 @@ class EditHabit extends Component {
                 </div>
 
                 {/* Modal */}
-                <div class="modal fade" id="redirectModal" tabindex="-1" role="dialog" aria-labelledby="linkDashboard" aria-hidden="true">
+                <div class="modal fade" id="redirectModal" tabindex="-1" role="dialog" aria-labelledby="linkDashboard" aria-hidden="true" data-backdrop="false">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
