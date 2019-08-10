@@ -57,7 +57,8 @@ class EditHabit extends Component {
                             duration: item.duration,
                             durUnits: item.durUnits,
                             notes: item.notes,
-                            weight: item.weight
+                            weight: item.weight,
+                            date: item.date
                         })
                     }
                 })
@@ -237,9 +238,9 @@ class EditHabit extends Component {
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h3 class="modal-title" id="linkDashboard">Success!</h3>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <Link to="/" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
-                                </button>
+                                </Link>
                             </div>
                             <div class="modal-body">
                                 This habit log has been updated.
