@@ -50,8 +50,8 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-areas: 
             "habit-total habit-total habit-total habit-total"
-            "habit-types habit-types habit-types time-spent"
-            "a b b c"
-            "d d d d"
+            "time-spent time-spent a b"
+            "habit-types habit-types habit-types b"
+            "c d d d"
     }
 }

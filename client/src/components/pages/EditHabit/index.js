@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./style.css";
 import DatePicker from "react-datepicker";
@@ -39,7 +40,7 @@ class EditHabit extends Component {
     // loads this block right before anything renders to the page
     componentDidMount() {
         let getID = window.location.href;
-        getID = getID.substring(41,66);
+        getID = getID.substring(41, 66);
         this.setState({ habitID: getID });
 
         axios.get(root + "/habits/" + this.state.habitID)
@@ -135,7 +136,7 @@ class EditHabit extends Component {
                                 required
                                 id="input-habit"
                                 className="form-control"
-                                value={ this.state.habitName }
+                                value={this.state.habitName}
                             />
                         </div>
 
@@ -147,7 +148,7 @@ class EditHabit extends Component {
                                 required
                                 id="input-type"
                                 className="form-control"
-                                value={ this.state.type }
+                                value={this.state.type}
                             />
                         </div>
 
@@ -223,9 +224,31 @@ class EditHabit extends Component {
                                 type="submit"
                                 value="Update"
                                 className="btn btn-primary"
+                                data-toggle="modal"
+                                data-target="#redirectModal"
                             />
                         </div>
                     </form>
+                </div>
+
+                {/* Modal */}
+                <div class="modal fade" id="redirectModal" tabindex="-1" role="dialog" aria-labelledby="linkDashboard" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="linkDashboard">Success!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                This habit log has been updated.
+                            </div>
+                            <div class="modal-footer">
+                                <Link to="/" type="button" class="btn btn-secondary" data-dismiss="modal">Return to Dashboard</Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
