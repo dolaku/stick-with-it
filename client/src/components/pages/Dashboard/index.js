@@ -5,6 +5,7 @@ import HabitTotal from "./components/GraphHabitsTotal";
 import HabitTypes from "./components/GraphHabitTypes";
 import TimeSpent from "./components/GraphTimeSpent";
 import TotalCount from "./components/TotalCount";
+import MaxHabit from "./components/MaxHabit";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -35,9 +36,9 @@ class Dashboard extends Component {
                     <TimeSpent />
                     <HabitTypes />
                     <TotalCount />
+                    <MaxHabit />
                     <div className="chart" id="a">A</div>
                     <div className="chart" id="b">B</div>
-                    <div className="chart" id="c">C</div>
                 </div>
             </div>
         )
