@@ -31,9 +31,10 @@ class GraphHabitsTotal extends Component {
             .then(res => {
                 let data = res.data;
                 let dataLabels = [];
-                let dataTotals = {};
-                let uniqueLabels = [];
-                let uniqueLabelsTimes = [];
+                let exerciseCount = 0;
+                let healthCount = 0;
+                let studyCount = 0;
+                let workCount = 0;
                 
                 // get habit labels - filter by user
                 data = data.filter(item => item.user === this.state.username);
@@ -44,32 +45,24 @@ class GraphHabitsTotal extends Component {
 
                 console.log(data);
 
-                for (let i = 0; i < dataLabels.length; i++) {
-                    dataTotals[dataLabels[i]] = 1 + (dataTotals[dataLabels[i]] || 0);
-                }
-           
+                data.map(item => {
+                    console.log(item.type);
+                    console.log(item.duration);
+                });
 
-                for ( let key in dataTotals ) {
-                    uniqueLabels.push(key);
-                    if (dataTotals.hasOwnProperty(key)) {
-                        uniqueLabelsTimes.push(dataTotals[key]);
-                    }
-                }
-                uniqueLabelsTimes.push(0);
-
-                console.log(uniqueLabelsTimes);
+                
                 
                 this.setState({
-                    chartData: {
-                        labels: uniqueLabels,
-                        datasets: [
-                            {
-                                label: "Minutes",
-                                data: uniqueLabelsTimes,
-                                backgroundColor: "#0056b3"
-                            }
-                        ]
-                    }
+                    // chartData: {
+                    //     labels: uniqueLabels,
+                    //     datasets: [
+                    //         {
+                    //             label: "Minutes",
+                    //             data: uniqueLabelsTimes,
+                    //             backgroundColor: "#0056b3"
+                    //         }
+                    //     ]
+                    // }
                 })
             })
             .catch(err => console.log(err))
