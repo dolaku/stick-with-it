@@ -63,7 +63,10 @@ class MaxHabit extends Component {
                 max = arrMax(uniqueLabelsCounts);
                 index = uniqueLabelsCounts.indexOf(max);
 
-                this.setState({ habit: uniqueLabels[index] })
+                this.setState({ 
+                    habit: uniqueLabels[index],
+                    maxHabit: max
+                })
             })
             .catch(err => console.log(err))
     }
