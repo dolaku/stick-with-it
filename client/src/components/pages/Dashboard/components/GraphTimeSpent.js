@@ -48,16 +48,16 @@ class GraphHabitsTotal extends Component {
                 data.map((item) => {
                     switch (item.type) {
                         case "Exercise":
-                            exerciseCount += 1;
+                            exerciseCount += item.duration;
                             break;
                         case "Health":
-                            healthCount += 1;
+                            healthCount += item.duration;
                             break;
                         case "Study":
-                            studyCount += 1;
+                            studyCount += item.duration;
                             break;
                         case "Work":
-                            workCount += 1;
+                            workCount += item.duration;
                             break;
                         default: return;
                     }
@@ -71,16 +71,16 @@ class GraphHabitsTotal extends Component {
                 
                 
                 this.setState({
-                    // chartData: {
-                    //     labels: uniqueLabels,
-                    //     datasets: [
-                    //         {
-                    //             label: "Minutes",
-                    //             data: uniqueLabelsTimes,
-                    //             backgroundColor: "#0056b3"
-                    //         }
-                    //     ]
-                    // }
+                    chartData: {
+                        labels: ["Exercise", "Health", "Study", "Work"],
+                        datasets: [
+                            {
+                                label: "Minutes",
+                                data: [exerciseCount, healthCount, studyCount, workCount],
+                                backgroundColor: "#0056b350"
+                            }
+                        ]
+                    }
                 })
             })
             .catch(err => console.log(err))
