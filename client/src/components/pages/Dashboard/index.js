@@ -35,13 +35,13 @@ class Dashboard extends Component {
                     <div className="chart chart-stat" id="a">
                         <h3>Keep up the good work!</h3>
                     </div>
+                    <TimeSpent />
                     <HabitTypes />
                     <TotalCount />
                     <MaxHabit />
                     <div className="chart chart-stat" id="b">
                         <h3 className="display-1"><span role="img" aria-label="clap">👏</span></h3>
                     </div>
-                    <TimeSpent />
                     <HabitTotal />
                 </div>
             </div>
