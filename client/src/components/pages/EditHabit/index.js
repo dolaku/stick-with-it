@@ -245,7 +245,7 @@ class EditHabit extends Component {
                                 This habit log has been updated.
                             </div>
                             <div class="modal-footer">
-                                <Link to="/" class="btn btn-secondary">Return to Dashboard</Link>
+                                <Link to="/" class="btn btn-secondary" data-dismiss="modal">Return to Dashboard</Link>
                             </div>
                         </div>
                     </div>
