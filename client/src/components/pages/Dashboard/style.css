@@ -6,7 +6,7 @@
     grid-template-areas: 
         "habit-total habit-total habit-total time-spent time-spent"
         "habit-types habit-types habit-types time-spent time-spent"
-        "top-stat max-stat b c d"
+        "top-stat top-stat max-stat max-stat"
 }
 
 .chartjs-render-monitor {
@@ -57,8 +57,8 @@
         grid-auto-rows: minmax(200px,auto);
         grid-template-areas: 
             "habit-total habit-total habit-total habit-total"
-            "time-spent time-spent top-stat max-stat"
-            "time-spent time-spent a b"
+            "time-spent time-spent a max-stat"
+            "time-spent time-spent top-stat b"
             "habit-types habit-types habit-types habit-types"
     }
 }
@@ -70,5 +70,12 @@
     }
     .chart {
         margin-bottom: 15px;
+        min-height: 130px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #habit-total {
+        display: none;
     }
 }

@@ -36,8 +36,8 @@ class Dashboard extends Component {
                         <h3>Keep up the good work!</h3>
                     </div>
                     <HabitTypes />
-                    <MaxHabit />
                     <TotalCount />
+                    <MaxHabit />
                     <div className="chart chart-stat" id="b">
                         <h3 className="display-1">👏</h3>
                     </div>
