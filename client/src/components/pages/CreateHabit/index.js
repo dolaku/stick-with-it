@@ -48,7 +48,6 @@ class CreateHabit extends Component {
                 { value: "Hiking", label: "Hiking" },
                 { value: "Running", label: "Running" },
                 { value: "Sports", label: "Sports" },
-                { value: "Stretching", label: "Stretching" },
                 { value: "Walking", label: "Walking" },
                 { value: "Weight Lifting", label: "Weight Lifting" },
                 { value: "Yoga", label: "Yoga" },
@@ -57,7 +56,7 @@ class CreateHabit extends Component {
             healthOptions: [
                 { value: "Checkups", label: "Checkups" },
                 { value: "Meditate", label: "Meditate" },
-                { value: "Sleep", label: "Sleep" },
+                { value: "Stretching", label: "Stretching" },
                 // { value: "Track Weight", label: "Track Weight" },
                 { value: "Other Health", label: "Other Health" }
             ],
@@ -128,29 +127,29 @@ class CreateHabit extends Component {
     // }
 
     // generateHabitList(optionList) {
-        // const { selectedOption } = this.state;
-        // <Select
-        //     value={selectedOption}
-        //     onChange={this.handleSelectChange}
-        //     options={optionList}
-        // />
+    // const { selectedOption } = this.state;
+    // <Select
+    //     value={selectedOption}
+    //     onChange={this.handleSelectChange}
+    //     options={optionList}
+    // />
 
-        // array.map(function (choice) {
-        //     return (
-        //         <option
-        //             key={choice}
-        //             value={choice}>
-        //             {choice}
-        //         </option>
-        //     )
-        // })
+    // array.map(function (choice) {
+    //     return (
+    //         <option
+    //             key={choice}
+    //             value={choice}>
+    //             {choice}
+    //         </option>
+    //     )
+    // })
 
-        // console.log(array)
-        // for (let i = 0; i < array.length; i++) {
-        //     options += <option key={array[i]} value={array[i]}>array[i]</option>
-        // }
-        // console.log(options);
-        // return options;
+    // console.log(array)
+    // for (let i = 0; i < array.length; i++) {
+    //     options += <option key={array[i]} value={array[i]}>array[i]</option>
+    // }
+    // console.log(options);
+    // return options;
     // }
 
     // methods to set values
@@ -170,7 +169,7 @@ class CreateHabit extends Component {
         this.setState({
             habitName: event.target.value
         });
-        
+
         switch (event.target.value) {
             case "Bicycling":
             case "Climbing":
@@ -178,26 +177,25 @@ class CreateHabit extends Component {
             case "Hiking":
             case "Running":
             case "Sports":
-            case "Stretching":
             case "Walking":
             case "Weight Lifting":
             case "Yoga":
             case "Other Exercise":
-                this.setState({ type: "Exercise"})
+                this.setState({ type: "Exercise" })
                 break;
             case "Checkups":
             case "Meditate":
-            case "Sleep":
+            case "Stretching":
             case "Track Weight":
             case "Other Health":
-                this.setState({ type: "Health"})
+                this.setState({ type: "Health" })
                 break;
             case "Coding":
             case "Prepare for Exam":
             case "Read a Book":
             case "Review/Practice":
             case "Other Study":
-                this.setState({ type: "Study"})
+                this.setState({ type: "Study" })
                 break;
             case "Apply for a New Job":
             case "Networking":
@@ -205,7 +203,7 @@ class CreateHabit extends Component {
             case "Organize Workspace":
             case "Plan the Day":
             case "Other Work":
-                this.setState({ type: "Work"})
+                this.setState({ type: "Work" })
                 break;
             default:
         }
@@ -213,7 +211,7 @@ class CreateHabit extends Component {
         if (event.target.value === "Track Weight") {
             this.setState({ showWeight: true });
         } else {
-            
+
             this.setState({ showWeight: false });
         }
     }
@@ -306,7 +304,7 @@ class CreateHabit extends Component {
                                     this.state.healthOptions.map(function (item) {
                                         return (
                                             <option
-                                            data-type="Health"
+                                                data-type="Health"
                                                 key={item.value}
                                                 value={item.value}>
                                                 {item.value}
@@ -319,7 +317,7 @@ class CreateHabit extends Component {
                                     this.state.studyOptions.map(function (item) {
                                         return (
                                             <option
-                                            data-type="Study"
+                                                data-type="Study"
                                                 key={item.value}
                                                 value={item.value}>
                                                 {item.value}
@@ -332,7 +330,7 @@ class CreateHabit extends Component {
                                     this.state.workOptions.map(function (item) {
                                         return (
                                             <option
-                                            data-type="Work"
+                                                data-type="Work"
                                                 key={item.value}
                                                 value={item.value}>
                                                 {item.value}
@@ -349,7 +347,7 @@ class CreateHabit extends Component {
                                 type="text"
                                 required
                                 className="form-control"
-                                value={ this.state.type }
+                                value={this.state.type}
                             />
                             {/* <select ref={this.textInput}
                                 required
