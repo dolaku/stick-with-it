@@ -9,7 +9,7 @@ class MaxHabit extends Component {
         super(props);
         this.state = {
             username: "",
-            max: 0,
+            maxHabit: 0,
             habit: ""
         }
     }
@@ -36,6 +36,7 @@ class MaxHabit extends Component {
                 let uniqueLabels = [];
                 let uniqueLabelsCounts = [];
                 let max;
+                let index;
 
                 // max of array numbers
                 const arrMax = arr => Math.max(...arr);
@@ -62,11 +63,10 @@ class MaxHabit extends Component {
                 max = arrMax(uniqueLabelsCounts);
 
                 console.log(uniqueLabels);
-                console.log(uniqueLabelsCounts);
-                console.log(max);
+                console.log(uniqueLabelsCounts.indexOf(max));
 
 
-                this.setState({ totalLogged: max })
+                this.setState({ maxHabit: max })
             })
             .catch(err => console.log(err))
     }
@@ -77,7 +77,7 @@ class MaxHabit extends Component {
             <div className="chart chart-stat" id="max-stat">
                 <h4>Max Type:</h4>
                 <p><strong>Habit</strong></p>
-                <h2 className="display-2">{ this.state.max }</h2>
+                <h2 className="display-2">{ this.state.maxHabit }</h2>
             </div>
         )
     }
