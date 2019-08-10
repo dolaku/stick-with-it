@@ -58,12 +58,7 @@ class GraphHabitTypes extends Component {
                     }
                 }
                 
-                console.log(uniqueLabels);
-                console.log(uniqueLabelsCounts);
-                
                 sum = arrSum(uniqueLabelsCounts);
-
-                console.log(sum);
 
                 this.setState({ totalLogged: sum })
             })
@@ -75,7 +70,7 @@ class GraphHabitTypes extends Component {
         return (
             <div className="chart chart-stat" id="top-stat">
                 <h3>Total Logs</h3>
-                <h2>{ this.state.datasets }</h2>
+                <h2>{ this.state.totalLogged }</h2>
             </div>
         )
     }
