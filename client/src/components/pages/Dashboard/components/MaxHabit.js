@@ -62,7 +62,7 @@ class MaxHabit extends Component {
                 max = arrMax(uniqueLabelsCounts);
 
                 console.log(uniqueLabels);
-                console.log(uniqueLabelsCount);
+                console.log(uniqueLabelsCounts);
                 console.log(max);
 
 
