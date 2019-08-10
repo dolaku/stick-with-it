@@ -55,6 +55,7 @@ class GraphHabitsTotal extends Component {
                         uniqueLabelsTimes.push(dataTotals[key]);
                     }
                 }
+                uniqueLabelsTimes.push(0);
                 
                 this.setState({
                     chartData: {

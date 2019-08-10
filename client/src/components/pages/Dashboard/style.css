@@ -48,10 +48,23 @@
 @media only screen and (max-width: 950px) {
     #dashboard-container {
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-auto-rows: minmax(200px,auto);
         grid-template-areas: 
             "habit-total habit-total habit-total habit-total"
             "time-spent time-spent a b"
-            "habit-types habit-types habit-types b"
-            "c d d d"
+            "time-spent time-spent c d"
+            "habit-types habit-types habit-types habit-types"
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #dashboard-container {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        grid-template-areas: 
+            "habit-total"
+            "time-spent"
+            "habit-types";
+    
     }
 }
