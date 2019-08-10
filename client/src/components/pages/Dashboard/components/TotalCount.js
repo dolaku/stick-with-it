@@ -34,6 +34,7 @@ class GraphHabitTypes extends Component {
                 let dataTotals = {};
                 let uniqueLabels = [];
                 let uniqueLabelsCounts = [];
+                let sum;
 
                 // sum of array numbers
                 const arrSum = arr => arr.reduce((a,b) => a + b, 0)
@@ -60,8 +61,11 @@ class GraphHabitTypes extends Component {
                 console.log(uniqueLabels);
                 console.log(uniqueLabelsCounts);
                 
+                sum = arrSum(uniqueLabelsCounts);
 
-                this.setState({ totalLogged: arrSum(uniqueLabelsCounts) })
+                console.log(sum);
+
+                this.setState({ totalLogged: sum })
             })
             .catch(err => console.log(err))
     }
