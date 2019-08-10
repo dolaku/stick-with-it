@@ -61,12 +61,9 @@ class MaxHabit extends Component {
                 }
 
                 max = arrMax(uniqueLabelsCounts);
+                index = uniqueLabelsCounts.indexOf(max);
 
-                console.log(uniqueLabels);
-                console.log(uniqueLabelsCounts.indexOf(max));
-
-
-                this.setState({ maxHabit: max })
+                this.setState({ habit: uniqueLabels[index] })
             })
             .catch(err => console.log(err))
     }
@@ -76,7 +73,7 @@ class MaxHabit extends Component {
         return (
             <div className="chart chart-stat" id="max-stat">
                 <h4>Max Type:</h4>
-                <p><strong>Habit</strong></p>
+                <h6><strong>{this.state.habit}</strong></h6>
                 <h2 className="display-2">{ this.state.maxHabit }</h2>
             </div>
         )
