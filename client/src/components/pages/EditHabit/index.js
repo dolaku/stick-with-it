@@ -58,7 +58,7 @@ class EditHabit extends Component {
                             durUnits: item.durUnits,
                             notes: item.notes,
                             weight: item.weight,
-                            date: item.date
+                            date: parseISO(item.date)
                         })
                     }
                 })
