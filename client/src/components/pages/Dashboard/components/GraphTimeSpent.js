@@ -43,7 +43,6 @@ class GraphHabitsTotal extends Component {
                     dataLabels.push(item.habitName);
                 })
 
-                console.log(data);
 
                 data.map((item) => {
                     switch (item.type) {
@@ -63,12 +62,6 @@ class GraphHabitsTotal extends Component {
                     }
                 });
 
-                console.log(exerciseCount);
-                console.log(healthCount);
-                console.log(studyCount);
-                console.log(workCount);
-
-                
                 
                 this.setState({
                     chartData: {
@@ -77,7 +70,7 @@ class GraphHabitsTotal extends Component {
                             {
                                 label: "Minutes",
                                 data: [exerciseCount, healthCount, studyCount, workCount],
-                                backgroundColor: "#0056b350"
+                                backgroundColor: "#0056b380"
                             }
                         ]
                     }

@@ -63,7 +63,7 @@ class GraphHabitsTotal extends Component {
                             {
                                 label: "Count",
                                 data: uniqueLabelsCounts,
-                                backgroundColor: "#0056b3"
+                                backgroundColor: "#0056b380"
                             }
                         ]
                     }
