@@ -240,6 +240,7 @@ class EditHabit extends Component {
                             </div>
                             <div className="modal-body">
                                 This habit log has been updated.
+                                <br />
                                 <Link to="/" className="btn btn-primary">Return to Dashboard</Link>
                             </div>
                             <div className="modal-footer">

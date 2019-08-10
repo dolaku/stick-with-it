@@ -460,6 +460,7 @@ class CreateHabit extends Component {
                             </div>
                             <div className="modal-body">
                                 This habit log has been Added.
+                                <br />
                                 <Link to="/" className="btn btn-primary">Return to Dashboard</Link>
                             </div>
                             <div className="modal-footer">

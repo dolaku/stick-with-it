@@ -9,7 +9,7 @@ class GraphHabitTypes extends Component {
         super(props);
         this.state = {
             username: "",
-            chartData: {}
+            totalLogged: 0
         }
     }
 
@@ -34,10 +34,13 @@ class GraphHabitTypes extends Component {
                 let dataTotals = {};
                 let uniqueLabels = [];
                 let uniqueLabelsCounts = [];
+
+                // sum of array numbers
+                const arrSum = arr => arr.reduce((a,b) => a + b, 0)
                 
                 // get habit types - filter by user
                 data = data.filter(item => item.user === this.state.username);
-
+                
                 data.forEach(item => {
                     dataLabels.push(item.type);
                 })
@@ -45,7 +48,7 @@ class GraphHabitTypes extends Component {
                 for (let i = 0; i < dataLabels.length; i++) {
                     dataTotals[dataLabels[i]] = 1 + (dataTotals[dataLabels[i]] || 0);
                 }
-           
+                
 
                 for ( let key in dataTotals ) {
                     uniqueLabels.push(key);
@@ -56,31 +59,9 @@ class GraphHabitTypes extends Component {
                 
                 console.log(uniqueLabels);
                 console.log(uniqueLabelsCounts);
+                
 
-                this.setState({
-                    chartData: {
-                        labels: uniqueLabels,
-                        datasets: [
-                            {
-                                label: "Count",
-                                data: uniqueLabelsCounts,
-                                backgroundColor: "#0056b3"
-                            }
-                        ],
-                        options: {
-                            scales: {
-                                xAxes: [{
-                                    ticks: {
-                                        beginAtZero: true,
-                                        min: 0,
-                                        stepSize: 1,
-                                        max: 4
-                                    }
-                                }]
-                            }
-                        }
-                    }
-                })
+                this.setState({ totalLogged: arrSum(uniqueLabelsCounts) })
             })
             .catch(err => console.log(err))
     }
@@ -89,7 +70,8 @@ class GraphHabitTypes extends Component {
     render() {
         return (
             <div className="chart chart-stat" id="top-stat">
-                
+                <h3>Total Logs</h3>
+                <h2>{ this.state.datasets }</h2>
             </div>
         )
     }
