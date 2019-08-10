@@ -32,13 +32,17 @@ class Dashboard extends Component {
             <div className="m-3">
                 <h1>Dashboard</h1>
                 <div id="dashboard-container" key={this.props.email}>
-                    <HabitTotal />
-                    <TimeSpent />
+                    <div className="chart chart-stat" id="a">
+                        <h3>Keep up the good work!</h3>
+                    </div>
                     <HabitTypes />
-                    <TotalCount />
                     <MaxHabit />
-                    <div className="chart" id="a">A</div>
-                    <div className="chart" id="b">B</div>
+                    <TotalCount />
+                    <div className="chart chart-stat" id="b">
+                        <h3 className="display-1">👏</h3>
+                    </div>
+                    <TimeSpent />
+                    <HabitTotal />
                 </div>
             </div>
         )

@@ -65,11 +65,10 @@
 
 @media only screen and (max-width: 650px) {
     #dashboard-container {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: 
-            "top-stat max-stat"
-            "time-spent time-spent"
-            "habit-types habit-types"
-            "habit-total habit-total"
+        display: flex;
+        flex-direction: column;
+    }
+    .chart {
+        margin-bottom: 15px;
     }
 }
