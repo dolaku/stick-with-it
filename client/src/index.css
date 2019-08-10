@@ -28,3 +28,7 @@ a:hover {
   text-decoration: none;
 }
 
+.modal-open {
+  overflow: auto;
+}
+

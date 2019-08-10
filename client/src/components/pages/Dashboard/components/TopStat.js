@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Bar } from "react-chartjs-2";
 
 const root = "https://stick-with-it.herokuapp.com";
 
@@ -54,8 +53,10 @@ class GraphHabitTypes extends Component {
                         uniqueLabelsCounts.push(dataTotals[key]);
                     }
                 }
-                uniqueLabelsCounts.push(0);
                 
+                console.log(uniqueLabels);
+                console.log(uniqueLabelsCounts);
+
                 this.setState({
                     chartData: {
                         labels: uniqueLabels,
