@@ -16,7 +16,7 @@ class EditHabit extends Component {
         this.onChangeDuration = this.onChangeDuration.bind(this);
         this.onChangeDurUnits = this.onChangeDurUnits.bind(this);
         this.onChangeNotes = this.onChangeNotes.bind(this);
-        this.onChangeDate = this.onChangeDate.bind(this);
+        // this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -57,8 +57,7 @@ class EditHabit extends Component {
                             duration: item.duration,
                             durUnits: item.durUnits,
                             notes: item.notes,
-                            weight: item.weight,
-                            date: parseISO(item.date)
+                            weight: item.weight
                         })
                     }
                 })
@@ -88,11 +87,11 @@ class EditHabit extends Component {
             weight: event.target.value
         });
     }
-    onChangeDate(date) {
-        this.setState({
-            date
-        });
-    }
+    // onChangeDate(date) {
+    //     this.setState({
+    //         date
+    //     });
+    // }
 
     onSubmit(event) {
         event.preventDefault();
@@ -103,8 +102,7 @@ class EditHabit extends Component {
             duration: this.state.duration,
             durUnits: this.state.durUnits,
             notes: this.state.notes,
-            weight: this.state.weight,
-            date: this.state.date
+            weight: this.state.weight
         }
 
         axios.post(root + "/habits/update/" + this.state.habitID, habit)
@@ -210,7 +208,7 @@ class EditHabit extends Component {
                             ></textarea>
                         </div>
 
-                        <div className="grid-span-2 v-align-center mx-auto">
+                        {/* <div className="grid-span-2 v-align-center mx-auto">
                             <label className="mr-2">Date: </label>
                             <DatePicker
                                 className="form-control"
@@ -218,7 +216,7 @@ class EditHabit extends Component {
                                 selected={this.state.date}
                                 onChange={this.onChangeDate}
                             />
-                        </div>
+                        </div> */}
 
                         <div className="form-group grid-span-2 mx-auto">
                             <input
