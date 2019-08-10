@@ -440,12 +440,33 @@ class CreateHabit extends Component {
                         </div>
 
                         <div className="form-group grid-span-2 mx-auto">
-                            <div
+                            <input
                                 type="submit"
+                                value="Add Habit"
                                 className="btn btn-primary"
-                            ><Link to="/">Add Habit</Link></div>
+                                data-toggle="modal"
+                                data-target="#redirectModal"
+                            />
                         </div>
                     </form>
+                </div>
+
+                {/* Modal */}
+                <div className="modal fade" id="redirectModal" tabindex="-1" role="dialog" aria-labelledby="linkDashboard" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h3 className="modal-title" id="linkDashboard">Success!</h3>
+                            </div>
+                            <div className="modal-body">
+                                This habit log has been Added.
+                                <Link to="/" className="btn btn-primary">Return to Dashboard</Link>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
