@@ -39,7 +39,7 @@ class Dashboard extends Component {
                     <TotalCount />
                     <MaxHabit />
                     <div className="chart chart-stat" id="b">
-                        <h3 className="display-1">👏</h3>
+                        <h3 className="display-1"><span role="img" aria-label="clap">👏</span></h3>
                     </div>
                     <TimeSpent />
                     <HabitTotal />
