@@ -440,10 +440,10 @@ class CreateHabit extends Component {
                         </div>
 
                         <div className="form-group grid-span-2 mx-auto">
-                            <input
+                            <div
                                 type="submit"
                                 className="btn btn-primary"
-                            ><Link to="/">Add Habit</Link></input>
+                            ><Link to="/">Add Habit</Link></div>
                         </div>
                     </form>
                 </div>
