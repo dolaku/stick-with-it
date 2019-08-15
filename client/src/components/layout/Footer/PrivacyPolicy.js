@@ -1,7 +1,7 @@
 import React from "react";
 
 const PrivacyPolicy = () => (
-    <div>
+    <div className="p-4 text-left">
         <h1>Privacy Policy</h1>
 
 
