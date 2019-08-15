@@ -8,6 +8,7 @@ const Footer = () => (
             <a className="link-email" href="mailto:dolaku@gmail.com">dolaku@gmail.com</a>
             <Link className="display-4 link-email" to="https://github.com/dolaku" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></Link>
             <p className="small">&copy; Copyright 2019. All Rights Reserved.</p>
+            <Link to="/privacy" className="nav-link">Privacy Policy</Link>
         </div>
     </footer>
 );
